@@ -9,10 +9,14 @@ public class GameManager : MonoBehaviour
     public PlayerController player { get; private set; }
     public List<Entity> players { get; private set; }
 
-    void Start()
+    void Awake()
     {
         instance = this;
-        player = FindFirstObjectByType<PlayerController>();
+        player = FindAnyObjectByType<PlayerController>();
+    }
+
+    void Start()
+    {
     }
 
     void Update()

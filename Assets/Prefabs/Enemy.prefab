@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6793952988684260079}
   - component: {fileID: 2503999945801204379}
   - component: {fileID: 1010083150534205315}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,6 +47,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14e5474f25bb1934ea8cd9445ddb52f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Health>k__BackingField: 0
+  MaxHeath: 0
+  onHeathChange:
+    m_PersistentCalls:
+      m_Calls: []
   speed: 5
 --- !u!212 &6793952988684260079
 SpriteRenderer:
@@ -146,7 +151,7 @@ PolygonCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 192
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
