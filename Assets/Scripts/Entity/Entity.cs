@@ -33,14 +33,18 @@ public class Entity : MonoBehaviour
 
         if (walkAnimation > 0)
         {
-            sprite.transform.localPosition = new Vector2(0, 0.548f + Mathf.Sin(walkAnimation) * 0.5f);
+            //sprite.transform.localPosition = new Vector3(0, Mathf.Sin(walkAnimation) * 0.5f, 0);
+            sprite.transform.localPosition = Vector3.zero;
+            sprite.transform.Translate(new Vector3(0f, Mathf.Sin(walkAnimation) * 0.5f, 0f));
             sprite.transform.localScale = new Vector2(12, 12 - Mathf.Cos(walkAnimation * 2));
             walkAnimation -= Time.deltaTime * animationSpeed;
         } else if (delta != Vector2.zero) walkAnimation = Mathf.PI;
 
+        sprite.transform.localRotation = Quaternion.Inverse(transform.rotation);
+
         if (attackAnimation > 0)
         {
-            sprite.transform.localRotation = Quaternion.Euler(0, 0, Mathf.Sin(attackAnimation) * 15 * (sprite.flipX ? 1 : -1));
+            sprite.transform.localRotation *= Quaternion.Euler(0, 0, Mathf.Sin(attackAnimation) * 15 * (sprite.flipX ? 1 : -1));
             attackAnimation -= Time.deltaTime * animationSpeed;
         }
 

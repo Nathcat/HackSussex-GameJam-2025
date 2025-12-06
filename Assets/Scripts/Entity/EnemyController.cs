@@ -1,19 +1,16 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(NavMeshAgent))]
 public class EnemyController : Entity {
 
-    [SerializeField] private float speed = 9;
-
-    new private Rigidbody2D rigidbody;
-    private UnityEngine.AI.NavMeshAgent navAgent;
+    private NavMeshAgent navAgent;
 
     override protected void Start()
     {
         base.Start();
-
-        rigidbody = GetComponent<Rigidbody2D>();
-        navAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+        navAgent = GetComponent<NavMeshAgent>();
     }
 
     override protected void Update()
@@ -22,8 +19,6 @@ public class EnemyController : Entity {
         navAgent.destination = target.transform.position;
 
         base.Update();
-
-        transform.GetChild(0).localRotation = Quaternion.Inverse(transform.rotation);
     }
 
     private Entity closestPlayer()
