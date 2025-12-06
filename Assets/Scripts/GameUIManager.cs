@@ -19,8 +19,8 @@ public class GameUIManager : MonoBehaviour
 
     void HealthChanged()
     {
-        float currentHealth = GameManager.instance.player.Health;
-        float maxHealth = GameManager.instance.player.MaxHeath;
+        float currentHealth = GameManager.instance.player.health;
+        float maxHealth = GameManager.instance.player.maxHealth;
 
         float healthRatio = currentHealth / maxHealth;
         float healthPercent = Mathf.Lerp(0, 100, healthRatio);

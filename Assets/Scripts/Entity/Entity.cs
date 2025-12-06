@@ -5,8 +5,8 @@ using UnityEngine.Events;
 public class Entity : MonoBehaviour
 {
     [field: SerializeField] public GUID Guid { get; private set; }
-    [field: SerializeField] public float Health { get; private set; }
-    [SerializeField] public float MaxHeath;
+    [field: SerializeField] public float health { get; private set; }
+    [SerializeField] public float maxHealth;
     [SerializeField] private float animationSpeed = 0.5f;
 
     public readonly UnityEvent onHeathChange = new UnityEvent();
@@ -50,5 +50,10 @@ public class Entity : MonoBehaviour
     public void StartAttackAnimation()
     {
         attackAnimation = Mathf.PI;
+    }
+
+    public void AddHealth(float amount)
+    {
+        health += amount;
     }
 }
