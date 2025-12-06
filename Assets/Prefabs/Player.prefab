@@ -244,7 +244,7 @@ MonoBehaviour:
   endColor: {r: 0.9019608, g: 0, b: 1, a: 1}
   gridDot: {fileID: 1807609631924579154, guid: 0b3dd2de48965c74a9e305b758f8ecae, type: 3}
   gridRadius: 2
-  matchDistance: 0.25
+  matchDistance: 0.5
 --- !u!1 &8273819105808523482
 GameObject:
   m_ObjectHideFlags: 0
@@ -293,8 +293,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 111ae59d4a6476641aab2c55a2e9b4df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Health>k__BackingField: 0
-  MaxHeath: 0
+  <health>k__BackingField: 0
+  maxHealth: 0
   animationSpeed: 10
   walkSpeed: 5
   runSpeed: 2
