@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class PlayerController : MonoBehaviour
+public class PlayerController : Entity
 {
     [SerializeField] private float walkSpeed = 10;
     [SerializeField] private float runSpeed = 2;
@@ -20,9 +20,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        Vector2 velocity = moveAction.ReadValue<Vector2>();
-        velocity *= walkSpeed;
-
+        Vector2 velocity = moveAction.ReadValue<Vector2>() * walkSpeed;
         if (sprintAction.IsPressed()) velocity *= runSpeed;
 
         rigidbody.linearVelocity = velocity;
