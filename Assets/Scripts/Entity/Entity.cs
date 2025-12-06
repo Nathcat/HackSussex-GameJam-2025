@@ -1,11 +1,13 @@
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Entity : MonoBehaviour
 {
     [field: SerializeField] public GUID Guid { get; private set; }
+    [field: SerializeField] public float Health { get; private set; }
     [SerializeField] public float MaxHeath;
-    [SerializeField] public float Health;
+    public UnityEvent onHeathChange = new UnityEvent();
 
     void Start()
     {
