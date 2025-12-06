@@ -1,0 +1,3 @@
+[submodule "ncat-nmp"]
+	path = Assets/navmeshplus
+	url = https://github.com/Nathcat/NavMeshPlus-APIUpdates
