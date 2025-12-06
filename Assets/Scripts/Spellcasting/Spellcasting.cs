@@ -72,6 +72,7 @@ public class Spellcasting : MonoBehaviour
 
             if (s != null) {
                 SpellEventManager.instance.onSpellCast.Invoke(s, GameManager.instance.player.transform.position, Camera.main.ScreenToWorldPoint(start));
+                GameManager.instance.player.StartAttackAnimation();
             }
             else {
                 SpellEventManager.instance.onSpellFailed.Invoke(pattern);
