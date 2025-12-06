@@ -1,40 +1,26 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class GameUIHandler : MonoBehaviour
+public class GameUIManager : MonoBehaviour
 {
-    public float currentHealth;
-    public float maxHealth;
-    public UIDocument UIDoc;
+    private UIDocument UIDoc;
     private Label m_healthLabel;
     private VisualElement m_healthBarMask;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Start()
     {
+        GameManager.instance.player.onHeathChange.AddListener(HealthChanged);
+        UIDoc = GetComponent<UIDocument>();
         m_healthLabel = UIDoc.rootVisualElement.Q<Label>("HealthLabel");
         m_healthBarMask = UIDoc.rootVisualElement.Q<VisualElement>("HealthBarMask");
-        maxHealth = 100;
-        currentHealth = 100;
+        HealthChanged();
         
     }
 
-    // Update is called once per frame
-    void Update()
+    private void HealthChanged()
     {
-        if (currentHealth > 0)
-        {
-            currentHealth = currentHealth - (float)0.1;
-            HealthChanged();
-        }
-        else
-        { 
-        }
-        
-    }
+        float currentHealth = GameManager.instance.player.Health;
+        float maxHealth = GameManager.instance.player.MaxHeath;
 
-    void HealthChanged()
-    {
         float healthRatio = currentHealth / maxHealth;
         float healthPercent = Mathf.Lerp(0, 100, healthRatio);
         m_healthBarMask.style.width = Length.Percent(healthPercent);
