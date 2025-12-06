@@ -1,8 +1,19 @@
+using System.Collections;
 using UnityEngine;
+
 
 public static class Util
 {
-    
+    public static void RunAfter(this MonoBehaviour behviour, float delay, System.Action action)
+    {
+        IEnumerator Delay()
+        {
+            yield return new WaitForSeconds(delay);
+            action();
+        }
+
+        behviour.StartCoroutine(Delay());
+    }
 }
 
 // Fix https://stackoverflow.com/a/64749403

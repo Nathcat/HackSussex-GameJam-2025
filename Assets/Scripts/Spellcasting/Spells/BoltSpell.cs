@@ -9,7 +9,9 @@ public class BoltSpell : MonoBehaviour
     public void OnCollisionEnter2D(Collision2D collision) {
         // TODO Do something here!
         Debug.LogWarning("Health not implemented!");
-        Destroy(gameObject);
+
+        Destroy(rb);
+        this.RunAfter(0.5f, () => Destroy(gameObject));
     }
 
     public void onSpellInvoked(Vector3 target) {
