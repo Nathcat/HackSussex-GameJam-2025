@@ -6,16 +6,24 @@ public class EnemyController : Entity {
     [SerializeField] private float speed = 9;
 
     new private Rigidbody2D rigidbody;
+    private UnityEngine.AI.NavMeshAgent navAgent;
 
-    void Start()
+    override protected void Start()
     {
+        base.Start();
+
         rigidbody = GetComponent<Rigidbody2D>();
+        navAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
     }
 
-    void Update()
+    override protected void Update()
     {
-        Vector3 x = (closestPlayer().transform.position - transform.position).normalized;
-        rigidbody.linearVelocity = x * speed;
+        Entity target = closestPlayer();
+        navAgent.destination = target.transform.position;
+
+        base.Update();
+
+        transform.GetChild(0).localRotation = Quaternion.Inverse(transform.rotation);
     }
 
     private Entity closestPlayer()
