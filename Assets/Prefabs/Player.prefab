@@ -150,7 +150,8 @@ GameObject:
   - component: {fileID: 1764437652725154995}
   - component: {fileID: 8408915894606454074}
   - component: {fileID: 5796813412629944823}
-  m_Layer: 0
+  - component: {fileID: 526616527723310865}
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -185,6 +186,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 111ae59d4a6476641aab2c55a2e9b4df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxHeath: 0
+  Health: 0
   walkSpeed: 10
   runSpeed: 2
 --- !u!212 &1764437652725154995
@@ -285,7 +288,7 @@ CapsuleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -306,3 +309,17 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 2}
   m_Direction: 0
+--- !u!114 &526616527723310865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8273819105808523482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e23aaa2ec7e2bb5489e39928564784b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHeath: 0
+  Health: 0

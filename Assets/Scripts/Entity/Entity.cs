@@ -1,14 +1,17 @@
+using UnityEditor;
 using UnityEngine;
 
 public class Entity : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [field: SerializeField] public GUID Guid { get; private set; }
+    [SerializeField] public float MaxHeath;
+    [SerializeField] public float Health;
+
     void Start()
     {
-        
+        Guid = GUID.Generate();
     }
 
-    // Update is called once per frame
     void Update()
     {
         
