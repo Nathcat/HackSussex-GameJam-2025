@@ -11,15 +11,19 @@ public class PlayerController : Entity
     private InputAction sprintAction;
     private InputAction moveAction;
 
-    void Start()
+    protected override void Start()
     {
+        base.Start();
+
         rigidbody = GetComponent<Rigidbody2D>();
         moveAction = InputSystem.actions.FindAction("Move");
         sprintAction = InputSystem.actions.FindAction("Sprint");
     }
 
-    void Update()
+    protected override void Update()
     {
+        base.Update();
+
         Vector2 velocity = moveAction.ReadValue<Vector2>() * walkSpeed;
         if (sprintAction.IsPressed()) velocity *= runSpeed;
 
