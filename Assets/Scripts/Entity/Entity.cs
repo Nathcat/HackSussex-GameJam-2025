@@ -54,6 +54,8 @@ public class Entity : MonoBehaviour
 
     public void AddHealth(float amount)
     {
-        health += amount;
+
+        health = Mathf.Clamp(health + amount, 0, maxHealth);
+        onHeathChange.Invoke();
     }
 }
