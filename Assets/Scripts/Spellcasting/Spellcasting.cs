@@ -41,6 +41,7 @@ public class Spellcasting : MonoBehaviour
             lineRenderer.endColor = endColor;
             lineRenderer.startWidth = lineWidth;
             lineRenderer.endWidth = lineWidth;
+            lineRenderer.alignment = LineAlignment.TransformZ;
 
             Vector3 worldStart = Camera.main.ScreenToWorldPoint(start);
             lineRenderer.positionCount = sections.Count + 2;
