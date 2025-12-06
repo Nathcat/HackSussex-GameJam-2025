@@ -16,6 +16,8 @@ public class BoltSpell : MonoBehaviour
         Vector3 direction = target - transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, angle + 90f);
-        rb.linearVelocity = direction.normalized * velocity;
+        Vector2 v = new Vector2(direction.x, direction.y);
+        v.Normalize();
+        rb.linearVelocity = v * velocity;
     }
 }
