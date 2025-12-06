@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: edacaddae666d7c4f9db2cd4ee85558c
+guid: 5cb6624d6f0996d4587fe8ccf976b951
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5276020615026360272
-    second: Health UI Top Layer_0
+      213: 5813616660723081785
+    second: Brick-Set-WallMiddleUpFacingColumn_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Health UI Top Layer_0
+      name: Brick-Set-WallMiddleUpFacingColumn_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 2
-        width: 27
-        height: 13
+        x: 0
+        y: 0
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0dfb84abbc0383940800000000000000
-      internalID: 5276020615026360272
+      spriteID: 93221b21d8d1ea050800000000000000
+      internalID: 5813616660723081785
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Health UI Top Layer_0: 5276020615026360272
+      Brick-Set-WallMiddleUpFacingColumn_0: 5813616660723081785
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
