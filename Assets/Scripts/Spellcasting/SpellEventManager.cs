@@ -5,9 +5,8 @@ public class SpellEventManager : MonoBehaviour
 {
     public static SpellEventManager instance;
 
-    public UnityEvent<Spell, Vector3> onSpellCast = new UnityEvent<Spell, Vector3>();
-    public UnityEvent<int[]> onSpellFailed = new UnityEvent<int[]>();
-    public Vector3 spellOrigin;
+    [HideInInspector] public UnityEvent<Spell, Vector3, Vector3> onSpellCast = new UnityEvent<Spell, Vector3, Vector3>();
+    [HideInInspector] public UnityEvent<int[]> onSpellFailed = new UnityEvent<int[]>();
 
     [SerializeField]
     private Spell[] spells;
@@ -26,9 +25,9 @@ public class SpellEventManager : MonoBehaviour
         return null;
     }
 
-    private void DoSpell(Spell spell, Vector3 position) {
-        Spell instance = Instantiate(spell.gameObject, spellOrigin, new Quaternion()).GetComponent<Spell>();
-        instance.onSpellInvoked.Invoke(position);
+    private void DoSpell(Spell spell, Vector3 origin, Vector3 target) {
+        Spell instance = Instantiate(spell.gameObject, origin, new Quaternion()).GetComponent<Spell>();
+        instance.onSpellInvoked.Invoke(target);
     }
 
     public void SpellFailPrintPattern(int[] pattern) {

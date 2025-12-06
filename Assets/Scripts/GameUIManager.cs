@@ -6,7 +6,8 @@ public class GameUIManager : MonoBehaviour
     private UIDocument UIDoc;
     private Label m_healthLabel;
     private VisualElement m_healthBarMask;
-    private void Start()
+    
+    void Start()
     {
         GameManager.instance.player.onHeathChange.AddListener(HealthChanged);
         UIDoc = GetComponent<UIDocument>();
@@ -16,7 +17,7 @@ public class GameUIManager : MonoBehaviour
         
     }
 
-    private void HealthChanged()
+    void HealthChanged()
     {
         float currentHealth = GameManager.instance.player.Health;
         float maxHealth = GameManager.instance.player.MaxHeath;
