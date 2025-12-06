@@ -75,7 +75,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  castPattern: 010000000500000003000000
+  castPattern: 020000000400000000000000
 --- !u!114 &7909217553361459266
 MonoBehaviour:
   m_ObjectHideFlags: 0
