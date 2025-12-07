@@ -14,12 +14,14 @@ public class Entity : MonoBehaviour
     private SpriteRenderer sprite;
     private float attackAnimation;
     private float walkAnimation;
+    private Transform shadow;
     private Vector2 old;
 
     protected virtual void Start()
     {
         Guid = GUID.Generate();
         old = transform.position;
+        shadow = transform.Find("shadow").transform;
         sprite = transform.Find("Sprite").GetComponent<SpriteRenderer>();
     }
 
@@ -33,14 +35,14 @@ public class Entity : MonoBehaviour
 
         if (walkAnimation > 0)
         {
-            //sprite.transform.localPosition = new Vector3(0, Mathf.Sin(walkAnimation) * 0.5f, 0);
             sprite.transform.localPosition = Vector3.zero;
             sprite.transform.Translate(new Vector3(0f, Mathf.Sin(walkAnimation) * 0.5f, 0f));
             sprite.transform.localScale = new Vector2(12, 12 - Mathf.Cos(walkAnimation * 2));
             walkAnimation -= Time.deltaTime * animationSpeed;
         } else if (delta != Vector2.zero) walkAnimation = Mathf.PI;
 
-        sprite.transform.localRotation = Quaternion.Inverse(transform.rotation);
+        shadow.localRotation = Quaternion.Inverse(transform.rotation);
+        sprite.transform.localRotation = shadow.localRotation;
 
         if (attackAnimation > 0)
         {
