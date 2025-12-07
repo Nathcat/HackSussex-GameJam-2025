@@ -116,12 +116,12 @@ TextureImporter:
       name: Torch Frame 1_0
       rect:
         serializedVersion: 2
-        x: 3
+        x: 0
         y: 0
-        width: 10
-        height: 15
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 8b00a5071c348e54cb0a9f4824bc7567
     internalID: 0
     vertices: []
     indices: 
