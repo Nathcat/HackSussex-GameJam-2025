@@ -119,12 +119,22 @@ public class Spellcasting : MonoBehaviour
     }
 
     private int MatchToPoint(Vector3 centreOffset) {
+        int closest = -1;
+        float cD = 1000;
         for (int i = 0; i < 6; i++) {
             float distance = (GetGridPosition(i) - centreOffset).magnitude;
 
             if (distance < matchDistance) {
                 return i;
             }
+            else if (distance <= cD) {
+                closest = i;
+                cD = distance;
+            }
+        }
+
+        if (centreOffset.magnitude >= gridRadius) {
+            return closest;
         }
 
         return -1;
