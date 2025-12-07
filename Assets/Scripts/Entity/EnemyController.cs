@@ -4,20 +4,21 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class EnemyController : Entity {
 
-    private NavMeshAgent navAgent;
+    protected NavMeshAgent navAgent;
     [SerializeField]
-    private float attackCooldown = 2f;
+    protected float attackCooldown = 2f;
     [SerializeField]
-    private float attackDistance = 0.5f;
-    private bool attackOnCooldown = false;
+    protected float attackDistance = 0.5f;
+    protected bool attackOnCooldown = false;
     [SerializeField]
-    private float attackDamage = 20f;
+    protected float attackDamage = 20f;
     [SerializeField]
-    private AggroGroup aggroGroup;
+    protected AggroGroup aggroGroup;
+    private bool aggroDelay = false;
     [SerializeField]
-    private float eyesightDistance = 10f;
+    protected float eyesightDistance = 10f;
     [SerializeField]
-    private GameObject healthBar;
+    protected GameObject healthBar;
 
     override protected void Start()
     {
@@ -26,6 +27,7 @@ public class EnemyController : Entity {
         navAgent.destination = new Vector3(transform.position.x, transform.position.y, 0f);
 
         base.onHeathChange.AddListener(UpdateHealthBar);
+        aggroGroup.aggroEvent.AddListener(OnAggro);
     }
 
     override protected void Update()
@@ -49,6 +51,11 @@ public class EnemyController : Entity {
             return;
         }
 
+        if (aggroDelay == true) {
+            base.Update();
+            return;
+        }
+
         navAgent.destination = aggroGroup.target.transform.position;
 
         base.Update();
@@ -60,7 +67,7 @@ public class EnemyController : Entity {
         if (d <= attackDistance) AttackEntity(aggroGroup.target);
     }
 
-    protected void AttackEntity(Entity player) {
+    protected virtual void AttackEntity(Entity player) {
         if (!attackOnCooldown) {
             base.StartAttackAnimation();
             player.AddHealth(-attackDamage);
@@ -77,7 +84,6 @@ public class EnemyController : Entity {
         RaycastHit2D hit = Physics2D.Raycast(p, vp - p, eyesightDistance, -1 ^ LayerMask.GetMask("Enemy"));
 
         if (hit) {
-            Debug.Log(hit.collider);
             return hit.collider == v && hit.distance <= eyesightDistance;
         }
         else return false;
@@ -86,5 +92,10 @@ public class EnemyController : Entity {
     private void UpdateHealthBar() {
         float fraction = health / maxHealth;
         healthBar.transform.localScale = new Vector3(2 * fraction, 0.2f, 0.2f);
+    }
+
+    private void OnAggro(Entity source) {
+        aggroDelay = true;
+        this.RunAfter(Random.Range(0f, 5f), () => { aggroDelay = false; }); 
     }
 }
