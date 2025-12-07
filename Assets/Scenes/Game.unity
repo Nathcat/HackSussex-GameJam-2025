@@ -127,10 +127,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2561171164165313064, guid: 79fa13f64748dd0498b517e4cdf724d2, type: 3}
-      propertyPath: m_ExcludeLayers.m_Bits
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7412022394623471593, guid: 79fa13f64748dd0498b517e4cdf724d2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -175,8 +171,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 6075438008804507770, guid: 79fa13f64748dd0498b517e4cdf724d2, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -23062,10 +23057,6 @@ PrefabInstance:
       propertyPath: aggroGroup
       value: 
       objectReference: {fileID: 459146825}
-    - target: {fileID: 7464181436066940235, guid: ddd68668fd25b0b4e84116df71f68f94, type: 3}
-      propertyPath: m_ExcludeLayers.m_Bits
-      value: 64
-      objectReference: {fileID: 0}
     - target: {fileID: 8297324297877714582, guid: ddd68668fd25b0b4e84116df71f68f94, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10
