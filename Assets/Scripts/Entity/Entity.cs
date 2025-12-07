@@ -10,13 +10,14 @@ public class Entity : MonoBehaviour
     [SerializeField] private float animationSpeed = 0.5f;
 
     public readonly UnityEvent onHeathChange = new UnityEvent();
+    public UnityEvent onDeath = new UnityEvent();
 
     private bool rotationFixed = false;
     private SpriteRenderer sprite;
+    private SpriteRenderer shadow;
     private float attackAnimation;
     private float walkAnimation;
     private Transform sprites;
-    private Transform shadow;
     private Vector2 old;
 
     protected virtual void Start()
@@ -25,7 +26,7 @@ public class Entity : MonoBehaviour
         old = transform.position;
 
         sprites = transform.Find("Sprites");
-        shadow = sprites.Find("Shadow").transform;
+        shadow = sprites.Find("Shadow").GetComponent<SpriteRenderer>();
         sprite = sprites.Find("Sprite").GetComponent<SpriteRenderer>();
     }
 
@@ -42,7 +43,7 @@ public class Entity : MonoBehaviour
             sprite.transform.localPosition = Vector3.zero;
             sprite.transform.localPosition = new Vector3(0f, Mathf.Sin(walkAnimation) * 0.5f, 0f);
             sprite.transform.localScale = new Vector2(12, 12 - Mathf.Cos(walkAnimation * 2));
-            shadow.localScale = Vector3.one * (10 - Mathf.Sin(walkAnimation) * 3);
+            shadow.transform.localScale = Vector3.one * (10 - Mathf.Sin(walkAnimation) * 3);
             walkAnimation -= Time.deltaTime * animationSpeed;
         } else if (delta != Vector2.zero) walkAnimation = Mathf.PI;
 
@@ -58,6 +59,10 @@ public class Entity : MonoBehaviour
             attackAnimation -= Time.deltaTime * animationSpeed;
         }
 
+        int sorting = -Mathf.RoundToInt(shadow.transform.position.y);
+        sprite.sortingOrder = sorting - 1;
+        shadow.sortingOrder = sorting - 1;
+
         old = position;
     }
 
@@ -71,5 +76,13 @@ public class Entity : MonoBehaviour
 
         health = Mathf.Clamp(health + amount, 0, maxHealth);
         onHeathChange.Invoke();
+
+        if (health == 0) {
+            onDeath.Invoke();
+        }
+    }
+
+    public void DestroyOnDie() {
+        Destroy(gameObject);
     }
 }
