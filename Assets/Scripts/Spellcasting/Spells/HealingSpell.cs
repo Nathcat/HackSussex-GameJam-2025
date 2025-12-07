@@ -1,5 +1,6 @@
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class HealingSpell : MonoBehaviour
 {
@@ -8,6 +9,15 @@ public class HealingSpell : MonoBehaviour
     public float radius = 5f;
     public float healingInterval = 0.1f;
     public float healingAmount = 10f;
+
+    private float start;
+    private Light2D light;
+
+    private void Start()
+    {
+        start = Time.realtimeSinceStartup;
+        light = transform.Find("Light 2D").GetComponent<Light2D>();
+    }
 
     public void onSpellInvoked(Vector3 target) {
         transform.position = target;
@@ -36,5 +46,10 @@ public class HealingSpell : MonoBehaviour
             timeElapsed += healingInterval;
         }
         Destroy(gameObject);
+    }
+
+    private void Update()
+    {
+        light.intensity = 10f - (Time.realtimeSinceStartup - start) * 2f;
     }
 }

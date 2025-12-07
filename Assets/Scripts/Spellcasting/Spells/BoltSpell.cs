@@ -1,11 +1,19 @@
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class BoltSpell : MonoBehaviour
 {
+    private float death = -1;
     private Rigidbody2D rb;
+    private Light2D light;
 
     public float velocity = 1f;
     public float damage = 8f;
+
+    private void Start()
+    {
+        light = transform.Find("Light 2D").GetComponent<Light2D>();
+    }
 
     public void OnCollisionEnter2D(Collision2D collision) {
 
@@ -17,6 +25,7 @@ public class BoltSpell : MonoBehaviour
         GetComponent<AudioSource>().Stop();
         transform.Find("Particle Death").GetComponent<ParticleSystem>().Play();
         this.RunAfter(1f, () => Destroy(gameObject));
+        death = Time.realtimeSinceStartup;
     }
 
     public void onSpellInvoked(Vector3 target) {
@@ -27,5 +36,10 @@ public class BoltSpell : MonoBehaviour
         Vector2 v = new Vector2(direction.x, direction.y);
         v.Normalize();
         rb.linearVelocity = v * velocity;
+    }
+
+    private void Update()
+    {
+        if (death != -1) light.intensity = 5f - (Time.realtimeSinceStartup - death) * 5f;
     }
 }

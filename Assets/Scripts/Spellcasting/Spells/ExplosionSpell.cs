@@ -1,10 +1,20 @@
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class ExplosionSpell : MonoBehaviour
 {
     public float radius = 5f;
     public float baseDamage = 25f;
     public AnimationCurve damageFalloff;
+    
+    private float start;
+    private Light2D light;
+
+    private void Start()
+    {
+        start = Time.realtimeSinceStartup;
+        light = transform.Find("Light 2D").GetComponent<Light2D>();
+    }
 
     public void onSpellInvoked(Vector3 target) {
         transform.position = target;
@@ -33,5 +43,10 @@ public class ExplosionSpell : MonoBehaviour
         }
 
         this.RunAfter(2f, () => { Destroy(gameObject); });
+    }
+
+    private void Update()
+    {
+        light.intensity = 20f - (Time.realtimeSinceStartup - start) * 10f;
     }
 }
