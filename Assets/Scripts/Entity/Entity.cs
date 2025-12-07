@@ -10,6 +10,7 @@ public class Entity : MonoBehaviour
     [SerializeField] private float animationSpeed = 0.5f;
 
     public readonly UnityEvent onHeathChange = new UnityEvent();
+    public UnityEvent onDeath = new UnityEvent();
 
     private bool rotationFixed = false;
     private SpriteRenderer sprite;
@@ -75,5 +76,13 @@ public class Entity : MonoBehaviour
 
         health = Mathf.Clamp(health + amount, 0, maxHealth);
         onHeathChange.Invoke();
+
+        if (health == 0) {
+            onDeath.Invoke();
+        }
+    }
+
+    public void DestroyOnDie() {
+        Destroy(gameObject);
     }
 }
