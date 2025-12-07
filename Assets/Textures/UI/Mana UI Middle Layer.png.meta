@@ -116,9 +116,9 @@ TextureImporter:
       name: Mana UI Middle Layer_0
       rect:
         serializedVersion: 2
-        x: 6
-        y: 6
-        width: 26
+        x: 0
+        y: 0
+        width: 116
         height: 5
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
