@@ -116,12 +116,12 @@ TextureImporter:
       name: Health UI Bottom Layer_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 5
-        width: 21
-        height: 7
+        x: 6
+        y: 6
+        width: 20
+        height: 5
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 416e2780e10be2846a63567609c266e7
     internalID: 0
     vertices: []
     indices: 

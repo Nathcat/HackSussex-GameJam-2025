@@ -6,10 +6,8 @@ public class GameUIManager : MonoBehaviour
     private UIDocument UIDoc;
     private Label m_healthLabel;
     private Label m_manaLabel;
-    private Label m_staminaLabel;
     private VisualElement m_healthBarMask;
     private VisualElement m_manaBarMask;
-    private VisualElement m_staminaBarMask;
 
     void Start()
     {
@@ -19,11 +17,8 @@ public class GameUIManager : MonoBehaviour
         m_healthBarMask = UIDoc.rootVisualElement.Q<VisualElement>("HealthBarMask");
         m_manaLabel = UIDoc.rootVisualElement.Q<Label>("ManaLabel");
         m_manaBarMask = UIDoc.rootVisualElement.Q<VisualElement>("ManaBarMask");
-        m_staminaLabel = UIDoc.rootVisualElement.Q<Label>("StaminaLabel");
-        m_staminaBarMask = UIDoc.rootVisualElement.Q<VisualElement>("StaminaBarMask");
         HealthChanged();
         ManaChanged();
-        StaminaChanged();
     }
 
     void HealthChanged()
@@ -48,17 +43,5 @@ public class GameUIManager : MonoBehaviour
         m_manaBarMask.style.width = Length.Percent(manaPercent);
         float rounded = Mathf.Round(currentMana);
         m_manaLabel.text = $"{rounded}/{maxMana}";
-    }
-
-    void StaminaChanged()
-    {
-        float currentStamina = GameManager.instance.player.Stamina;
-        float maxStamina = GameManager.instance.player.MaxStamina;
-
-        float staminaRatio = currentStamina / maxStamina;
-        float staminaPercent = Mathf.Lerp(0, 100, staminaRatio);
-        m_staminaBarMask.style.width = Length.Percent(staminaPercent);
-        float rounded = Mathf.Round(currentStamina);
-        m_staminaLabel.text = $"{rounded}/{maxStamina}";
     }
 }

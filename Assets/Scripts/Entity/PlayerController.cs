@@ -5,13 +5,9 @@ using UnityEngine.InputSystem;
 public class PlayerController : Entity
 {
     [SerializeField] private float walkSpeed = 10;
-    [SerializeField] private float runSpeed = 2;
 
     [field: SerializeField] public float Mana { get; private set; }
     [SerializeField] public float MaxMana;
-
-    [field: SerializeField] public float Stamina { get; private set; }
-    [SerializeField] public float MaxStamina;
 
     new private Rigidbody2D rigidbody;
     private InputAction sprintAction;
@@ -29,10 +25,7 @@ public class PlayerController : Entity
     protected override void Update()
     {
         base.Update();
-
         Vector2 velocity = moveAction.ReadValue<Vector2>() * walkSpeed;
-        if (sprintAction.IsPressed()) velocity *= runSpeed;
-
         rigidbody.linearVelocity = velocity;
     }
 }
