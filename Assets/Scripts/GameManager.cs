@@ -13,6 +13,9 @@ public class GameManager : MonoBehaviour
     {
         instance = this;
         player = FindAnyObjectByType<PlayerController>();
+        players = new List<Entity>();
+
+        players.Add(player);
     }
 
     void Start()

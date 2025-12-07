@@ -3,6 +3,7 @@ using System.Collections;
 
 public class HealingSpell : MonoBehaviour
 {
+    public float healAmount = 20f;
     public float timeToDestroy = 5f;
     public float radius = 5f;
     public float healingInterval = 0.1f;
@@ -24,15 +25,10 @@ public class HealingSpell : MonoBehaviour
                 radius
             );
 
-            foreach (Collider2D c in colliders) {
-                // TODO Do adding health here!
-                // Must find the component which has the game object's health, if it has that component,
-                // and then add health to it
-                Debug.LogWarning("Health not implemented!");
-                
+            foreach (Collider2D c in colliders) {                
                 Entity entity;
                 if ((entity = c.GetComponent<Entity>()) != null) {
-                    
+                    entity.AddHealth(healAmount);
                 }
             }
 

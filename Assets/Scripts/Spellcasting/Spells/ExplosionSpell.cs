@@ -15,8 +15,6 @@ public class ExplosionSpell : MonoBehaviour
         );
 
         foreach (Collider2D c in colliders) {
-            Debug.LogWarning("Health not implemented!");
-
             Entity entity;
             if ((entity = c.GetComponent<Entity>()) != null) {
                 // Again, STUPID
@@ -27,7 +25,7 @@ public class ExplosionSpell : MonoBehaviour
                 float distance = (e - t).magnitude;
                 if (distance <= radius) {   // WHY DO I NEED TO DO THIS UNITY IS SO FUCKING STUPID
                     float damage = baseDamage * damageFalloff.Evaluate(distance / radius);
-                    Debug.Log("Would deal " + damage + " to " + entity.gameObject.name);
+                    entity.AddHealth(-damage);
                 }
             }
         }

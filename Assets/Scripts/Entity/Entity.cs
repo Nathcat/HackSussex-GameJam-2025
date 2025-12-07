@@ -5,23 +5,28 @@ using UnityEngine.Events;
 public class Entity : MonoBehaviour
 {
     [field: SerializeField] public GUID Guid { get; private set; }
-    [field: SerializeField] public float Health { get; private set; }
-    [SerializeField] public float MaxHeath;
-
+    [field: SerializeField] public float health { get; private set; }
+    [SerializeField] public float maxHealth;
     [SerializeField] private float animationSpeed = 0.5f;
 
     public readonly UnityEvent onHeathChange = new UnityEvent();
 
+    private bool rotationFixed = false;
     private SpriteRenderer sprite;
     private float attackAnimation;
     private float walkAnimation;
+    private Transform sprites;
+    private Transform shadow;
     private Vector2 old;
 
     protected virtual void Start()
     {
         Guid = GUID.Generate();
         old = transform.position;
-        sprite = transform.Find("Sprite").GetComponent<SpriteRenderer>();
+
+        sprites = transform.Find("Sprites");
+        shadow = sprites.Find("Shadow").transform;
+        sprite = sprites.Find("Sprite").GetComponent<SpriteRenderer>();
     }
 
     protected virtual void Update()
@@ -34,10 +39,18 @@ public class Entity : MonoBehaviour
 
         if (walkAnimation > 0)
         {
-            sprite.transform.localPosition = new Vector2(0, 0.548f + Mathf.Sin(walkAnimation) * 0.5f);
+            sprite.transform.localPosition = Vector3.zero;
+            sprite.transform.localPosition = new Vector3(0f, Mathf.Sin(walkAnimation) * 0.5f, 0f);
             sprite.transform.localScale = new Vector2(12, 12 - Mathf.Cos(walkAnimation * 2));
+            shadow.localScale = Vector3.one * (10 - Mathf.Sin(walkAnimation) * 3);
             walkAnimation -= Time.deltaTime * animationSpeed;
         } else if (delta != Vector2.zero) walkAnimation = Mathf.PI;
+
+        if (!rotationFixed)
+        {
+            sprites.localRotation = Quaternion.Inverse(transform.rotation);
+            rotationFixed = false;
+        }
 
         if (attackAnimation > 0)
         {
@@ -51,5 +64,12 @@ public class Entity : MonoBehaviour
     public void StartAttackAnimation()
     {
         attackAnimation = Mathf.PI;
+    }
+
+    public void AddHealth(float amount)
+    {
+
+        health = Mathf.Clamp(health + amount, 0, maxHealth);
+        onHeathChange.Invoke();
     }
 }

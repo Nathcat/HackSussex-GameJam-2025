@@ -1,21 +1,35 @@
 using UnityEngine;
+using UnityEngine.AI;
 
-[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(NavMeshAgent))]
 public class EnemyController : Entity {
 
-    [SerializeField] private float speed = 9;
+    private NavMeshAgent navAgent;
+    [SerializeField]
+    private float attackCooldown = 2f;
+    [SerializeField]
+    private float attackDistance = 0.5f;
+    private bool attackOnCooldown = false;
 
-    new private Rigidbody2D rigidbody;
-
-    void Start()
+    override protected void Start()
     {
-        rigidbody = GetComponent<Rigidbody2D>();
+        base.Start();
+        navAgent = GetComponent<NavMeshAgent>();
     }
 
-    void Update()
+    override protected void Update()
     {
-        Vector3 x = (closestPlayer().transform.position - transform.position).normalized;
-        rigidbody.linearVelocity = x * speed;
+        Entity target = closestPlayer();
+        navAgent.destination = target.transform.position;
+
+        base.Update();
+
+        Entity closest = closestPlayer();
+        Vector2 cPos = new Vector2(closest.transform.position.x, closest.transform.position.y);
+        Vector2 mPos = new Vector2(transform.position.x, transform.position.y);
+
+        float d = (cPos - mPos).magnitude;
+        if (d <= attackDistance) AttackEntity(closest);
     }
 
     private Entity closestPlayer()
@@ -35,4 +49,16 @@ public class EnemyController : Entity {
 
         return closest;
     }
+
+    protected void AttackEntity(Entity player) {
+        if (!attackOnCooldown) {
+            Debug.Log("Attacking player");
+            base.StartAttackAnimation();
+            Debug.LogWarning("Health not implemented!");
+            attackOnCooldown = true;
+            navAgent.Stop();
+
+            this.RunAfter(attackCooldown, () => { attackOnCooldown = false; navAgent.Resume(); });
+        }
+    } 
 }
