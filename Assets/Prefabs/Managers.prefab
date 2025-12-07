@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3017918892879687139}
   - component: {fileID: 6228281520545936330}
   - component: {fileID: 7956329892396351610}
+  - component: {fileID: 6354270091904653864}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -68,3 +69,24 @@ MonoBehaviour:
   - {fileID: 1428310822817054226, guid: 79752b386ce01c64fb1a0cc3ce1b518c, type: 3}
   - {fileID: 1428310822817054226, guid: 77da9024994529b4381528ccc31c02d0, type: 3}
   - {fileID: 1428310822817054226, guid: f96986f457178d14ab3b0abf159a9c81, type: 3}
+--- !u!114 &6354270091904653864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252704392012835149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fad3c41584c46b045b426cb6b44f9412, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walk: {fileID: 8300000, guid: a5c3cc6bc6aacba4d8aee7ec67e71cfb, type: 3}
+  hit: {fileID: 8300000, guid: 2a02a818242e3f54bb89c89a086850c0, type: 3}
+  orb: {fileID: 8300000, guid: 2f4ad28c1836e4a449d0e027dd512376, type: 3}
+  bolt: {fileID: 8300000, guid: 17c7e6d3c77e1a24e9dd32ab5f0e6a65, type: 3}
+  explosion: {fileID: 8300000, guid: 6f1d7d0082cbee34385342f74d50fded, type: 3}
+  heal: {fileID: 8300000, guid: 35d4f9f56b3e5084ea4b77f4eb38767c, type: 3}
+  deny: {fileID: 8300000, guid: cac53c260cd72214d80de681d87d0595, type: 3}
+  doorUnlock: {fileID: 8300000, guid: c7368eb8bf8b8ac428b5f6deaf2fdce1, type: 3}
+  doorDeny: {fileID: 8300000, guid: 35348f0888133a343bfd44b70da14477, type: 3}

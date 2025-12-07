@@ -22,8 +22,9 @@ public class SpellDoor : MonoBehaviour
     {
         if (spell == required && Vector2.Distance(diagram.position, target) <= distance)
         {
+            AudioManager.instance.doorUnlock.PlayAt(transform.position);
             ParticlePlayer.Activate(transform.GetChild(1).gameObject);
             Destroy(gameObject);
-        }
+        } else AudioManager.instance.doorDeny.PlayAt(transform.position);
     }
 }

@@ -18,11 +18,11 @@ public class GameUIManager : MonoBehaviour
         m_healthBarMask = UIDoc.rootVisualElement.Q<VisualElement>("HealthBarMask");
         m_manaLabel = UIDoc.rootVisualElement.Q<Label>("ManaLabel");
         m_manaBarMask = UIDoc.rootVisualElement.Q<VisualElement>("ManaBarMask");
-        HealthChanged();
+        HealthChanged(0);
         ManaChanged();
     }
 
-    void HealthChanged()
+    void HealthChanged(float _)
     {
         float currentHealth = GameManager.instance.player.health;
         float maxHealth = GameManager.instance.player.maxHealth;

@@ -24,6 +24,7 @@ public class PlayerController : Entity
         rigidbody = GetComponent<Rigidbody2D>();
         moveAction = InputSystem.actions.FindAction("Move");
         sprintAction = InputSystem.actions.FindAction("Sprint");
+        onHeathChange.AddListener(HealthChanged);
     }
 
     protected override void Update()
@@ -44,5 +45,10 @@ public class PlayerController : Entity
     {
         mana = Mathf.Clamp(mana + amount, 0, maxMana);
         onManaChange.Invoke();
+    }
+
+    private void HealthChanged(float delta)
+    {
+        if (delta < 0) AudioManager.instance.hit.PlayAt(transform.position);
     }
 }

@@ -11,7 +11,7 @@ public class HealingSpell : MonoBehaviour
 
     public void onSpellInvoked(Vector3 target) {
         transform.position = target;
-
+        AudioManager.instance.heal.PlayAt(target);
         StartCoroutine(DestroyTimer());
     }
 

@@ -79,6 +79,7 @@ public class Spellcasting : MonoBehaviour
             }
             else {
                 SpellEventManager.instance.onSpellFailed.Invoke(pattern);
+                AudioManager.instance.deny.PlayAt(GameManager.instance.player.transform.position);
             }
         }
     }
