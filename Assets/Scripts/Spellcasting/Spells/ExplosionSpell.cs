@@ -29,5 +29,7 @@ public class ExplosionSpell : MonoBehaviour
                 }
             }
         }
+
+        this.RunAfter(5f, () => { Destroy(gameObject); });
     }
 }
