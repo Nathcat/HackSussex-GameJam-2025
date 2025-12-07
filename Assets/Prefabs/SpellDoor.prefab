@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: -1006563467
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -585171535845920079, guid: 37775f14aff2f7e4d806007966d39a3d, type: 3}
+  m_Sprite: {fileID: 3886991661936825653, guid: 165c42fbca48d4940b6d3e1bef4aa18f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4944,6 +4944,7 @@ GameObject:
   - component: {fileID: 5535347358578263337}
   - component: {fileID: 3483998101233406030}
   - component: {fileID: 4991542012350036737}
+  - component: {fileID: 8720006511727029325}
   m_Layer: 0
   m_Name: SpellDoor
   m_TagString: Untagged
@@ -5037,3 +5038,49 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   required: {fileID: 1428310822817054226, guid: 79752b386ce01c64fb1a0cc3ce1b518c, type: 3}
   distance: 3
+--- !u!61 &8720006511727029325
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6014388363328547598}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.26, y: 0.24}
+    newSize: {x: 0.26, y: 0.24}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 0.26, y: 0.24}
+  m_EdgeRadius: 0

@@ -12,6 +12,7 @@ public class GameUIManager : MonoBehaviour
     void Start()
     {
         GameManager.instance.player.onHeathChange.AddListener(HealthChanged);
+        GameManager.instance.player.onManaChange.AddListener(ManaChanged);
         UIDoc = GetComponent<UIDocument>();
         m_healthLabel = UIDoc.rootVisualElement.Q<Label>("HealthLabel");
         m_healthBarMask = UIDoc.rootVisualElement.Q<VisualElement>("HealthBarMask");
@@ -35,8 +36,8 @@ public class GameUIManager : MonoBehaviour
 
     void ManaChanged()
     {
-        float currentMana = GameManager.instance.player.Mana;
-        float maxMana = GameManager.instance.player.MaxMana;
+        float currentMana = GameManager.instance.player.mana;
+        float maxMana = GameManager.instance.player.maxMana;
 
         float manaRatio = currentMana / maxMana;
         float manaPercent = Mathf.Lerp(0, 100, manaRatio);
