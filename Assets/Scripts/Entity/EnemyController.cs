@@ -16,12 +16,16 @@ public class EnemyController : Entity {
     private AggroGroup aggroGroup;
     [SerializeField]
     private float eyesightDistance = 10f;
+    [SerializeField]
+    private GameObject healthBar;
 
     override protected void Start()
     {
         base.Start();
         navAgent = GetComponent<NavMeshAgent>();
         navAgent.destination = new Vector3(transform.position.x, transform.position.y, 0f);
+
+        base.onHeathChange.AddListener(UpdateHealthBar);
     }
 
     override protected void Update()
@@ -95,5 +99,10 @@ public class EnemyController : Entity {
             return hit.collider == v && hit.distance <= eyesightDistance;
         }
         else return false;
+    }
+
+    private void UpdateHealthBar() {
+        float fraction = health / maxHealth;
+        healthBar.transform.localScale = new Vector3(2 * fraction, 0.2f, 0.2f);
     }
 }
