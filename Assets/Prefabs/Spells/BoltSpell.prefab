@@ -77,6 +77,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   castPattern: 0100000001000000
+  <manaCost>k__BackingField: 25
 --- !u!114 &7909217553361459266
 MonoBehaviour:
   m_ObjectHideFlags: 0

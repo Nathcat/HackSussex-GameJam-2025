@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -6,8 +7,9 @@ public class PlayerController : Entity
 {
     [SerializeField] private float walkSpeed = 10;
 
-    [field: SerializeField] public float Mana { get; private set; }
-    [SerializeField] public float MaxMana;
+    [field: SerializeField] public float mana { get; private set; }
+    [SerializeField] public float maxMana;
+    public readonly UnityEvent onManaChange = new UnityEvent();
 
     new private Rigidbody2D rigidbody;
     private InputAction sprintAction;
@@ -32,5 +34,11 @@ public class PlayerController : Entity
 
     public void OnDeath() {
         Debug.Log("Player died :(");
+    }
+
+    public void AddMana(float amount)
+    {
+        mana = Mathf.Clamp(mana + amount, 0, maxMana);
+        onManaChange.Invoke();
     }
 }

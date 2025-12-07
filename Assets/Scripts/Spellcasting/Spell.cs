@@ -9,6 +9,9 @@ public class Spell : MonoBehaviour
     [SerializeField]
     private int[] castPattern;
 
+    [field: SerializeField]
+    public float manaCost { get; private set; }
+
     public bool MatchPattern(int[] pattern) {
         return Enumerable.SequenceEqual(castPattern, pattern);
     }

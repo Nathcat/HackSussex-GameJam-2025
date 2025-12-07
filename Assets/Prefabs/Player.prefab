@@ -445,8 +445,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   walkSpeed: 5
-  <Mana>k__BackingField: 0
-  MaxMana: 0
+  <mana>k__BackingField: 100
+  maxMana: 100
 --- !u!50 &8408915894606454074
 Rigidbody2D:
   serializedVersion: 5
