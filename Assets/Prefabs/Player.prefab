@@ -446,6 +446,7 @@ MonoBehaviour:
   walkSpeed: 5
   <mana>k__BackingField: 100
   maxMana: 100
+  manaRegen: 2
 --- !u!50 &8408915894606454074
 Rigidbody2D:
   serializedVersion: 5
