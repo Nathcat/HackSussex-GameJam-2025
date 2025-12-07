@@ -93,7 +93,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7210960206414388637}
-  - component: {fileID: 1428310822817054226}
+  - component: {fileID: 8374029495442374389}
   - component: {fileID: 7909217553361459266}
   - component: {fileID: 8035656633162458255}
   - component: {fileID: 1728910584216251662}
@@ -123,7 +123,7 @@ Transform:
   - {fileID: 8677077177821362465}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1428310822817054226
+--- !u!114 &8374029495442374389
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -132,13 +132,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 3415751325850482881}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42c4b1800bf243c488d6ee762f3166ab, type: 3}
+  m_Script: {fileID: 11500000, guid: 6e15569353cfb1247ac80038cddb29ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   onSpellInvoked:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1428310822817054226}
+      - m_Target: {fileID: 8374029495442374389}
         m_TargetAssemblyTypeName: Spell, Assembly-CSharp
         m_MethodName: SpellInvokedDebugMessage
         m_Mode: 0
@@ -162,7 +162,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  castPattern: 01000000
+  castPattern: 
   <manaCost>k__BackingField: 15
 --- !u!114 &7909217553361459266
 MonoBehaviour:
