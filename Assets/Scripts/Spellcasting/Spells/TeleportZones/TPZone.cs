@@ -8,5 +8,6 @@ public class TPZone : TeleportZone
     public override void OnTeleport()
     {
         GameManager.instance.player.transform.position = targetLocation;
+        AudioManager.instance.teleport.PlayAt(targetLocation);
     }
 }

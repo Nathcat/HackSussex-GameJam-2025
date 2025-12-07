@@ -14,7 +14,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip doorUnlock;
     public AudioClip doorDeny;
     public AudioClip connect;
-
+    public AudioClip teleport;
     private void Awake()
     {
         instance = this;

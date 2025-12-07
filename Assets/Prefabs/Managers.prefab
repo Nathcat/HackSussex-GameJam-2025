@@ -66,7 +66,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   spells:
-  - {fileID: 1428310822817054226, guid: 79752b386ce01c64fb1a0cc3ce1b518c, type: 3}
+  - {fileID: 8374029495442374389, guid: 79752b386ce01c64fb1a0cc3ce1b518c, type: 3}
   - {fileID: 1428310822817054226, guid: 77da9024994529b4381528ccc31c02d0, type: 3}
   - {fileID: 1428310822817054226, guid: f96986f457178d14ab3b0abf159a9c81, type: 3}
   - {fileID: 1428310822817054226, guid: f858bdce6e1a11f4eb7e78b2e86529d1, type: 3}
@@ -92,3 +92,4 @@ MonoBehaviour:
   doorUnlock: {fileID: 8300000, guid: c7368eb8bf8b8ac428b5f6deaf2fdce1, type: 3}
   doorDeny: {fileID: 8300000, guid: 35348f0888133a343bfd44b70da14477, type: 3}
   connect: {fileID: 8300000, guid: 86f9a2d6a3f9a0545bfc6c2ec553680a, type: 3}
+  teleport: {fileID: 8300000, guid: 9daadcc9a4011f64492b0f8d88ac227d, type: 3}
