@@ -11,9 +11,11 @@ public class Entity : MonoBehaviour
 
     public readonly UnityEvent onHeathChange = new UnityEvent();
 
+    private bool rotationFixed = false;
     private SpriteRenderer sprite;
     private float attackAnimation;
     private float walkAnimation;
+    private Transform sprites;
     private Transform shadow;
     private Vector2 old;
 
@@ -21,8 +23,10 @@ public class Entity : MonoBehaviour
     {
         Guid = GUID.Generate();
         old = transform.position;
-        shadow = transform.Find("shadow").transform;
-        sprite = transform.Find("Sprite").GetComponent<SpriteRenderer>();
+
+        sprites = transform.Find("Sprites");
+        shadow = sprites.Find("Shadow").transform;
+        sprite = sprites.Find("Sprite").GetComponent<SpriteRenderer>();
     }
 
     protected virtual void Update()
@@ -36,17 +40,21 @@ public class Entity : MonoBehaviour
         if (walkAnimation > 0)
         {
             sprite.transform.localPosition = Vector3.zero;
-            sprite.transform.Translate(new Vector3(0f, Mathf.Sin(walkAnimation) * 0.5f, 0f));
+            sprite.transform.localPosition = new Vector3(0f, Mathf.Sin(walkAnimation) * 0.5f, 0f);
             sprite.transform.localScale = new Vector2(12, 12 - Mathf.Cos(walkAnimation * 2));
+            shadow.localScale = Vector3.one * (10 - Mathf.Sin(walkAnimation) * 3);
             walkAnimation -= Time.deltaTime * animationSpeed;
         } else if (delta != Vector2.zero) walkAnimation = Mathf.PI;
 
-        shadow.localRotation = Quaternion.Inverse(transform.rotation);
-        sprite.transform.localRotation = shadow.localRotation;
+        if (!rotationFixed)
+        {
+            sprites.localRotation = Quaternion.Inverse(transform.rotation);
+            rotationFixed = false;
+        }
 
         if (attackAnimation > 0)
         {
-            sprite.transform.localRotation *= Quaternion.Euler(0, 0, Mathf.Sin(attackAnimation) * 15 * (sprite.flipX ? 1 : -1));
+            sprite.transform.localRotation = Quaternion.Euler(0, 0, Mathf.Sin(attackAnimation) * 15 * (sprite.flipX ? 1 : -1));
             attackAnimation -= Time.deltaTime * animationSpeed;
         }
 
