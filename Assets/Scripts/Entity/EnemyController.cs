@@ -39,11 +39,10 @@ public class EnemyController : Entity {
         }
 
         if (aggroGroup.target == null) {
-            foreach (Entity p in GameManager.instance.players) {
-                if (IsInEyeline(p.gameObject.GetComponent<Collider2D>())) {
-                    Debug.Log(p.gameObject.name + " is in " + gameObject.name + "'s eyeline!");
-                    aggroGroup.aggroEvent.Invoke(p);
-                }
+            PlayerController player = GameManager.instance.player;
+            if (IsInEyeline(player.gameObject.GetComponent<Collider2D>())) {
+                Debug.Log(player.gameObject.name + " is in " + gameObject.name + "'s eyeline!");
+                aggroGroup.aggroEvent.Invoke(player);
             }
 
             base.Update();
@@ -92,6 +91,7 @@ public class EnemyController : Entity {
     private void UpdateHealthBar() {
         float fraction = health / maxHealth;
         healthBar.transform.localScale = new Vector3(2 * fraction, 0.2f, 0.2f);
+        aggroGroup.aggroEvent.Invoke(GameManager.instance.player);
     }
 
     private void OnAggro(Entity source) {
