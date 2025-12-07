@@ -3,7 +3,8 @@ using UnityEngine;
 public class Orb : MonoBehaviour
 {
     [SerializeField] private float gravity;
-    [SerializeField] private float value = 15 / 4;
+    [SerializeField] private float manaValue = 35 / 5;
+    [SerializeField] private float healthValue = 10 / 5;
     private Vector3 velocity;
     private float floor;
 
@@ -25,7 +26,8 @@ public class Orb : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         AudioManager.instance.orb.PlayAt(transform.position);
-        GameManager.instance.player.AddMana(value);
+        GameManager.instance.player.AddMana(manaValue);
+        GameManager.instance.player.AddHealth(healthValue);
         Destroy(gameObject);
     }
 }
