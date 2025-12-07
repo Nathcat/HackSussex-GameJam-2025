@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 37775f14aff2f7e4d806007966d39a3d
+guid: 165c42fbca48d4940b6d3e1bef4aa18f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -585171535845920079
-    second: Bolt Door_0
+      213: 3886991661936825653
+    second: Heal Door_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bolt Door_0
+      name: Heal Door_0
       rect:
         serializedVersion: 2
-        x: 7
-        y: 13
-        width: 18
-        height: 4
+        x: 6
+        y: 1
+        width: 20
+        height: 25
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1b2fb39a69d01e7f0800000000000000
-      internalID: -585171535845920079
+      spriteID: 53556a6825e51f530800000000000000
+      internalID: 3886991661936825653
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 8fccd287fc618c1479888dc18540576e
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Bolt Door_0: -585171535845920079
+      Heal Door_0: 3886991661936825653
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
