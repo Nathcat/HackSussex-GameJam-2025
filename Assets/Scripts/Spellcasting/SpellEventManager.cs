@@ -11,9 +11,12 @@ public class SpellEventManager : MonoBehaviour
     [SerializeField]
     private Spell[] spells;
 
-    void Start() {
+    private void Awake()
+    {
         instance = this;
+    }
 
+    void Start() {
         onSpellCast.AddListener(DoSpell);
     }
 

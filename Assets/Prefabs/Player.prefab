@@ -359,7 +359,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   renderPlane: 5
   lineMaterial: {fileID: 2100000, guid: 724a31b72840ecf43836c012d0514154, type: 2}
-  lineWidth: 0.5
+  lineWidth: 0.2
   startColor: {r: 0, g: 0.8, b: 1, a: 1}
   endColor: {r: 0.9019608, g: 0, b: 1, a: 1}
   gridDot: {fileID: 1807609631924579154, guid: 0b3dd2de48965c74a9e305b758f8ecae, type: 3}
@@ -444,8 +444,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   walkSpeed: 5
-  <Mana>k__BackingField: 0
-  MaxMana: 0
+  <mana>k__BackingField: 100
+  maxMana: 100
 --- !u!50 &8408915894606454074
 Rigidbody2D:
   serializedVersion: 5
@@ -489,7 +489,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2

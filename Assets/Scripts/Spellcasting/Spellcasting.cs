@@ -72,9 +72,10 @@ public class Spellcasting : MonoBehaviour
             int[] pattern = sections.ToArray();
             Spell s = SpellEventManager.instance.DetermineSpell(pattern);
 
-            if (s != null) {
+            if (s != null && GameManager.instance.player.mana >= s.manaCost) {
                 SpellEventManager.instance.onSpellCast.Invoke(s, GameManager.instance.player.transform.position, Camera.main.ScreenToWorldPoint(start));
                 GameManager.instance.player.StartAttackAnimation();
+                GameManager.instance.player.AddMana(-s.manaCost);
             }
             else {
                 SpellEventManager.instance.onSpellFailed.Invoke(pattern);
