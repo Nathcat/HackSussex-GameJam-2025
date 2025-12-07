@@ -32,6 +32,6 @@ public class ExplosionSpell : MonoBehaviour
             }
         }
 
-        this.RunAfter(5f, () => { Destroy(gameObject); });
+        this.RunAfter(2f, () => { Destroy(gameObject); });
     }
 }
