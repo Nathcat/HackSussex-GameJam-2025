@@ -4,7 +4,6 @@ using UnityEngine.Events;
 
 public class Entity : MonoBehaviour
 {
-    [field: SerializeField] public GUID Guid { get; private set; }
     [field: SerializeField] public float health { get; private set; }
     [SerializeField] public float maxHealth;
     [SerializeField] private float animationSpeed = 0.5f;
@@ -22,7 +21,6 @@ public class Entity : MonoBehaviour
 
     protected virtual void Start()
     {
-        Guid = GUID.Generate();
         old = transform.position;
 
         sprites = transform.Find("Sprites");
