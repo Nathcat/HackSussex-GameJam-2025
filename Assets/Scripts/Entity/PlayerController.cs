@@ -28,4 +28,8 @@ public class PlayerController : Entity
         Vector2 velocity = moveAction.ReadValue<Vector2>() * walkSpeed;
         rigidbody.linearVelocity = velocity;
     }
+
+    public void OnDeath() {
+        Debug.Log("Player died :(");
+    }
 }
