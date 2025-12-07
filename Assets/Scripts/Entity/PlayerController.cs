@@ -29,4 +29,8 @@ public class PlayerController : Entity
 
         rigidbody.linearVelocity = velocity;
     }
+
+    public void OnDeath() {
+        Debug.Log("Player died :(");
+    }
 }

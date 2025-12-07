@@ -8,7 +8,9 @@ public class BoltSpell : MonoBehaviour
     public float damage = 8f;
 
     public void OnCollisionEnter2D(Collision2D collision) {
-        collision.transform.GetComponent<Entity>().AddHealth(-damage);
+
+        Entity c;
+        if ((c = collision.transform.GetComponent<Entity>()) != null) c.AddHealth(-damage);
 
         Destroy(rb);
         this.RunAfter(0.5f, () => Destroy(gameObject));

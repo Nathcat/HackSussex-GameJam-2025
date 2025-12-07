@@ -10,6 +10,8 @@ public class EnemyController : Entity {
     [SerializeField]
     private float attackDistance = 0.5f;
     private bool attackOnCooldown = false;
+    [SerializeField]
+    private float attackDamage = 20f;
 
     override protected void Start()
     {
@@ -52,13 +54,12 @@ public class EnemyController : Entity {
 
     protected void AttackEntity(Entity player) {
         if (!attackOnCooldown) {
-            Debug.Log("Attacking player");
             base.StartAttackAnimation();
-            Debug.LogWarning("Health not implemented!");
+            player.AddHealth(-attackDamage);
             attackOnCooldown = true;
-            navAgent.Stop();
+            navAgent.isStopped = true;
 
-            this.RunAfter(attackCooldown, () => { attackOnCooldown = false; navAgent.Resume(); });
+            this.RunAfter(attackCooldown, () => { attackOnCooldown = false; navAgent.isStopped = false; });
         }
     } 
 }
