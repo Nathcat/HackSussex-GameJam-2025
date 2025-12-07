@@ -77,7 +77,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   castPattern: 0100000001000000
-  <manaCost>k__BackingField: 25
+  <manaCost>k__BackingField: 15
 --- !u!114 &7909217553361459266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: 30
-  damage: 100
+  damage: 25
 --- !u!50 &8035656633162458255
 Rigidbody2D:
   serializedVersion: 5

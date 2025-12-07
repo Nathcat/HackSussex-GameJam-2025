@@ -38,7 +38,7 @@ public class EnemyController : Entity {
 
         if (aggroGroup.target == null) {
             foreach (Entity p in GameManager.instance.players) {
-                if (IsInEyeline(p.gameObject.GetComponent<BoxCollider2D>())) {
+                if (IsInEyeline(p.gameObject.GetComponent<Collider2D>())) {
                     Debug.Log(p.gameObject.name + " is in " + gameObject.name + "'s eyeline!");
                     aggroGroup.aggroEvent.Invoke(p);
                 }
@@ -60,24 +60,6 @@ public class EnemyController : Entity {
         if (d <= attackDistance) AttackEntity(aggroGroup.target);
     }
 
-    private Entity closestPlayer()
-    {
-        Entity closest = null;
-        float distance = float.PositiveInfinity;
-
-        foreach (Entity entity in GameManager.instance.players)
-        {
-            float d = (transform.position - entity.transform.position).sqrMagnitude;
-            if (d < distance)
-            {
-                closest = entity;
-                distance = d;
-            }
-        }
-
-        return closest;
-    }
-
     protected void AttackEntity(Entity player) {
         if (!attackOnCooldown) {
             base.StartAttackAnimation();
@@ -92,7 +74,7 @@ public class EnemyController : Entity {
     private bool IsInEyeline(Collider2D v) {
         Vector2 p = new Vector2(transform.position.x, transform.position.y);
         Vector2 vp = new Vector2(v.transform.position.x, v.transform.position.y);
-        RaycastHit2D hit = Physics2D.Raycast(p, vp - p, eyesightDistance, LayerMask.GetMask("Player"));
+        RaycastHit2D hit = Physics2D.Raycast(p, vp - p, eyesightDistance, -1 ^ LayerMask.GetMask("Enemy"));
 
         if (hit) {
             Debug.Log(hit.collider);

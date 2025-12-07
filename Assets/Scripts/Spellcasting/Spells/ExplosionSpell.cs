@@ -24,6 +24,7 @@ public class ExplosionSpell : MonoBehaviour
 
                 float distance = (e - t).magnitude;
                 if (distance <= radius) {   // WHY DO I NEED TO DO THIS UNITY IS SO FUCKING STUPID
+                    Debug.Log(damageFalloff.Evaluate(distance / radius));
                     float damage = baseDamage * damageFalloff.Evaluate(distance / radius);
                     entity.AddHealth(-damage);
                 }

@@ -74,7 +74,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   castPattern: 050000000100000003000000
-  <manaCost>k__BackingField: 15
+  <manaCost>k__BackingField: 25
 --- !u!114 &2211830402107652135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,14 +87,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e65466073d5093745ba1d5ebb6b450ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 10
-  baseDamage: 25
+  radius: 5
+  baseDamage: 60
   damageFalloff:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: -0.0013198853
-      value: 0.99990845
+      time: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
