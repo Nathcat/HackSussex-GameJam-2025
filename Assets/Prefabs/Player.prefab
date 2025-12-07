@@ -324,7 +324,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -444,7 +444,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   walkSpeed: 5
-  runSpeed: 2
+  <Mana>k__BackingField: 0
+  MaxMana: 0
 --- !u!50 &8408915894606454074
 Rigidbody2D:
   serializedVersion: 5
