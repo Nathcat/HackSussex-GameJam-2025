@@ -13,7 +13,8 @@ public class BoltSpell : MonoBehaviour
         if ((c = collision.transform.GetComponent<Entity>()) != null) c.AddHealth(-damage);
 
         Destroy(rb);
-        this.RunAfter(0.5f, () => Destroy(gameObject));
+        transform.Find("Particle Death").GetComponent<ParticleSystem>().Play();
+        this.RunAfter(1f, () => Destroy(gameObject));
     }
 
     public void onSpellInvoked(Vector3 target) {
