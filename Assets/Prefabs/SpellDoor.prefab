@@ -5037,7 +5037,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   required: {fileID: 1428310822817054226, guid: 79752b386ce01c64fb1a0cc3ce1b518c, type: 3}
-  distance: 3
+  distance: 5
 --- !u!61 &8720006511727029325
 BoxCollider2D:
   m_ObjectHideFlags: 0

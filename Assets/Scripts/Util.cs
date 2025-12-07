@@ -14,6 +14,11 @@ public static class Util
 
         behviour.StartCoroutine(Delay());
     }
+
+    public static void PlayAt(this AudioClip clip, Vector3 position)
+    {
+        AudioSource.PlayClipAtPoint(clip, position);
+    }
 }
 
 // Fix https://stackoverflow.com/a/64749403

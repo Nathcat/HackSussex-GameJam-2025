@@ -24,6 +24,7 @@ public class Orb : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        AudioManager.instance.orb.PlayAt(transform.position);
         GameManager.instance.player.AddMana(value);
         Destroy(gameObject);
     }

@@ -13,6 +13,8 @@ public class BoltSpell : MonoBehaviour
         if ((c = collision.transform.GetComponent<Entity>()) != null) c.AddHealth(-damage);
 
         Destroy(rb);
+        AudioManager.instance.bolt.PlayAt(transform.position);
+        GetComponent<AudioSource>().Stop();
         transform.Find("Particle Death").GetComponent<ParticleSystem>().Play();
         this.RunAfter(1f, () => Destroy(gameObject));
     }

@@ -8,6 +8,7 @@ public class ExplosionSpell : MonoBehaviour
 
     public void onSpellInvoked(Vector3 target) {
         transform.position = target;
+        AudioManager.instance.explosion.PlayAt(target);
 
         Collider2D[] colliders = Physics2D.OverlapCircleAll(
             new Vector2(transform.position.x, transform.position.y),

@@ -9,7 +9,7 @@ public class Entity : MonoBehaviour
     [SerializeField] public float maxHealth;
     [SerializeField] private float animationSpeed = 0.5f;
 
-    public readonly UnityEvent onHeathChange = new UnityEvent();
+    public readonly UnityEvent<float> onHeathChange = new UnityEvent<float>();
     public UnityEvent onDeath = new UnityEvent();
 
     private bool rotationFixed = false;
@@ -45,7 +45,11 @@ public class Entity : MonoBehaviour
             sprite.transform.localScale = new Vector2(12, 12 - Mathf.Cos(walkAnimation * 2));
             shadow.transform.localScale = Vector3.one * (10 - Mathf.Sin(walkAnimation) * 3);
             walkAnimation -= Time.deltaTime * animationSpeed;
-        } else if (delta != Vector2.zero) walkAnimation = Mathf.PI;
+        } else if (delta != Vector2.zero)
+        {
+            walkAnimation = Mathf.PI;
+            AudioManager.instance.walk.PlayAt(position);
+        }
 
         if (!rotationFixed)
         {
@@ -75,7 +79,7 @@ public class Entity : MonoBehaviour
     {
 
         health = Mathf.Clamp(health + amount, 0, maxHealth);
-        onHeathChange.Invoke();
+        onHeathChange.Invoke(amount);
 
         if (health == 0) {
             onDeath.Invoke();
