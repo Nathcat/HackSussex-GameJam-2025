@@ -12,26 +12,48 @@ public class EnemyController : Entity {
     private bool attackOnCooldown = false;
     [SerializeField]
     private float attackDamage = 20f;
+    [SerializeField]
+    private AggroGroup aggroGroup;
+    [SerializeField]
+    private float eyesightDistance = 10f;
 
     override protected void Start()
     {
         base.Start();
         navAgent = GetComponent<NavMeshAgent>();
+        navAgent.destination = new Vector3(transform.position.x, transform.position.y, 0f);
     }
 
     override protected void Update()
     {
-        Entity target = closestPlayer();
-        navAgent.destination = target.transform.position;
+        if (aggroGroup == null) {
+            Debug.LogWarning(gameObject.name + " has no aggro group!");
+            base.Update();
+            return;
+        }
+
+        if (aggroGroup.target == null) {
+            foreach (Entity p in GameManager.instance.players) {
+                if (IsInEyeline(p.gameObject.GetComponent<BoxCollider2D>())) {
+                    Debug.Log(p.gameObject.name + " is in " + gameObject.name + "'s eyeline!");
+                    aggroGroup.aggroEvent.Invoke(p);
+                }
+            }
+
+            base.Update();
+
+            return;
+        }
+
+        navAgent.destination = aggroGroup.target.transform.position;
 
         base.Update();
 
-        Entity closest = closestPlayer();
-        Vector2 cPos = new Vector2(closest.transform.position.x, closest.transform.position.y);
+        Vector2 cPos = new Vector2(aggroGroup.target.transform.position.x, aggroGroup.target.transform.position.y);
         Vector2 mPos = new Vector2(transform.position.x, transform.position.y);
 
         float d = (cPos - mPos).magnitude;
-        if (d <= attackDistance) AttackEntity(closest);
+        if (d <= attackDistance) AttackEntity(aggroGroup.target);
     }
 
     private Entity closestPlayer()
@@ -61,5 +83,17 @@ public class EnemyController : Entity {
 
             this.RunAfter(attackCooldown, () => { attackOnCooldown = false; navAgent.isStopped = false; });
         }
-    } 
+    }
+
+    private bool IsInEyeline(Collider2D v) {
+        Vector2 p = new Vector2(transform.position.x, transform.position.y);
+        Vector2 vp = new Vector2(v.transform.position.x, v.transform.position.y);
+        RaycastHit2D hit = Physics2D.Raycast(p, vp - p, eyesightDistance, LayerMask.GetMask("Player"));
+
+        if (hit) {
+            Debug.Log(hit.collider);
+            return hit.collider == v && hit.distance <= eyesightDistance;
+        }
+        else return false;
+    }
 }
