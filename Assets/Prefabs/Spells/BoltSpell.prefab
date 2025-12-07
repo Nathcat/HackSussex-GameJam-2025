@@ -162,7 +162,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  castPattern: 0100000001000000
+  castPattern: 01000000
   <manaCost>k__BackingField: 15
 --- !u!114 &7909217553361459266
 MonoBehaviour:
