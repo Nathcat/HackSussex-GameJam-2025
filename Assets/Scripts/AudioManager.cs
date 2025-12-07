@@ -13,6 +13,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip deny;
     public AudioClip doorUnlock;
     public AudioClip doorDeny;
+    public AudioClip connect;
 
     private void Awake()
     {

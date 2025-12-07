@@ -220,6 +220,7 @@ GameObject:
   - component: {fileID: 7868874642832545722}
   - component: {fileID: 5274941139094166201}
   - component: {fileID: 3275753769768296887}
+  - component: {fileID: 7270298832448925721}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -365,6 +366,29 @@ MonoBehaviour:
   gridDot: {fileID: 1807609631924579154, guid: 0b3dd2de48965c74a9e305b758f8ecae, type: 3}
   gridRadius: 2.5
   matchDistance: 0.5
+--- !u!164 &7270298832448925721
+AudioReverbFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7354853710692482830}
+  m_Enabled: 1
+  m_DryLevel: 0
+  m_Room: 0
+  m_RoomHF: 0
+  m_DecayTime: 1
+  m_DecayHFRatio: 0.5
+  m_ReflectionsLevel: -10000
+  m_ReverbLevel: 0
+  m_ReverbDelay: 0.04
+  m_Diffusion: 100
+  m_Density: 100
+  m_HFReference: 5000
+  m_RoomLF: 0
+  m_LFReference: 250
+  m_ReflectionsDelay: 0
+  m_ReverbPreset: 27
 --- !u!1 &8273819105808523482
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,7 +457,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 893101993931310766}
         m_TargetAssemblyTypeName: Entity, Assembly-CSharp
-        m_MethodName: DestroyOnDie
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

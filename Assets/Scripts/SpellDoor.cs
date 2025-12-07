@@ -20,11 +20,15 @@ public class SpellDoor : MonoBehaviour
 
     private void CheckSpell(Spell spell, Vector3 _, Vector3 target)
     {
-        if (spell == required && Vector2.Distance(diagram.position, target) <= distance)
+        if (Vector2.Distance(diagram.position, target) <= distance)
         {
-            AudioManager.instance.doorUnlock.PlayAt(transform.position);
-            ParticlePlayer.Activate(transform.GetChild(1).gameObject);
-            Destroy(gameObject);
-        } else AudioManager.instance.doorDeny.PlayAt(transform.position);
+            if (spell == required)
+            {
+                AudioManager.instance.doorUnlock.PlayAt(transform.position);
+                ParticlePlayer.Activate(transform.GetChild(1).gameObject);
+                Destroy(gameObject);
+            }
+            else AudioManager.instance.doorDeny.PlayAt(transform.position);
+        }
     }
 }

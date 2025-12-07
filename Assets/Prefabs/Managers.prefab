@@ -91,3 +91,4 @@ MonoBehaviour:
   deny: {fileID: 8300000, guid: cac53c260cd72214d80de681d87d0595, type: 3}
   doorUnlock: {fileID: 8300000, guid: c7368eb8bf8b8ac428b5f6deaf2fdce1, type: 3}
   doorDeny: {fileID: 8300000, guid: 35348f0888133a343bfd44b70da14477, type: 3}
+  connect: {fileID: 8300000, guid: 86f9a2d6a3f9a0545bfc6c2ec553680a, type: 3}

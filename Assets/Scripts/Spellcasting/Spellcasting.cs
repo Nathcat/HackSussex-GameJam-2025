@@ -60,6 +60,7 @@ public class Spellcasting : MonoBehaviour
             Vector3 targetOffset = target - end;
             int p;
             if ((p = MatchToPoint(targetOffset)) != -1) {
+                AudioManager.instance.connect.PlayAt(GameManager.instance.player.transform.position);
                 sections.Add(p);
                 CreateGrid();
             }
