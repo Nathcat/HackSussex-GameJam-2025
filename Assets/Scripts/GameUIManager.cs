@@ -5,16 +5,25 @@ public class GameUIManager : MonoBehaviour
 {
     private UIDocument UIDoc;
     private Label m_healthLabel;
+    private Label m_manaLabel;
+    private Label m_staminaLabel;
     private VisualElement m_healthBarMask;
-    
+    private VisualElement m_manaBarMask;
+    private VisualElement m_staminaBarMask;
+
     void Start()
     {
         GameManager.instance.player.onHeathChange.AddListener(HealthChanged);
         UIDoc = GetComponent<UIDocument>();
         m_healthLabel = UIDoc.rootVisualElement.Q<Label>("HealthLabel");
         m_healthBarMask = UIDoc.rootVisualElement.Q<VisualElement>("HealthBarMask");
+        m_manaLabel = UIDoc.rootVisualElement.Q<Label>("ManaLabel");
+        m_manaBarMask = UIDoc.rootVisualElement.Q<VisualElement>("ManaBarMask");
+        m_staminaLabel = UIDoc.rootVisualElement.Q<Label>("StaminaLabel");
+        m_staminaBarMask = UIDoc.rootVisualElement.Q<VisualElement>("StaminaBarMask");
         HealthChanged();
-        
+        ManaChanged();
+        StaminaChanged();
     }
 
     void HealthChanged()
@@ -27,5 +36,29 @@ public class GameUIManager : MonoBehaviour
         m_healthBarMask.style.width = Length.Percent(healthPercent);
         float rounded = Mathf.Round(currentHealth);
         m_healthLabel.text = $"{rounded}/{maxHealth}";
+    }
+
+    void ManaChanged()
+    {
+        float currentMana = GameManager.instance.player.Mana;
+        float maxMana = GameManager.instance.player.MaxMana;
+
+        float manaRatio = currentMana / maxMana;
+        float manaPercent = Mathf.Lerp(0, 100, manaRatio);
+        m_manaBarMask.style.width = Length.Percent(manaPercent);
+        float rounded = Mathf.Round(currentMana);
+        m_manaLabel.text = $"{rounded}/{maxMana}";
+    }
+
+    void StaminaChanged()
+    {
+        float currentStamina = GameManager.instance.player.Stamina;
+        float maxStamina = GameManager.instance.player.MaxStamina;
+
+        float staminaRatio = currentStamina / maxStamina;
+        float staminaPercent = Mathf.Lerp(0, 100, staminaRatio);
+        m_staminaBarMask.style.width = Length.Percent(staminaPercent);
+        float rounded = Mathf.Round(currentStamina);
+        m_staminaLabel.text = $"{rounded}/{maxStamina}";
     }
 }

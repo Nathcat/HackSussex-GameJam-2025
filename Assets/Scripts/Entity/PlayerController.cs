@@ -7,6 +7,12 @@ public class PlayerController : Entity
     [SerializeField] private float walkSpeed = 10;
     [SerializeField] private float runSpeed = 2;
 
+    [field: SerializeField] public float Mana { get; private set; }
+    [SerializeField] public float MaxMana;
+
+    [field: SerializeField] public float Stamina { get; private set; }
+    [SerializeField] public float MaxStamina;
+
     new private Rigidbody2D rigidbody;
     private InputAction sprintAction;
     private InputAction moveAction;

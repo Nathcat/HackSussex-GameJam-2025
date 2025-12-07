@@ -7,6 +7,7 @@ public class Entity : MonoBehaviour
     [field: SerializeField] public GUID Guid { get; private set; }
     [field: SerializeField] public float Health { get; private set; }
     [SerializeField] public float MaxHeath;
+
     [SerializeField] private float animationSpeed = 0.5f;
 
     public readonly UnityEvent onHeathChange = new UnityEvent();
