@@ -359,7 +359,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   renderPlane: 5
   lineMaterial: {fileID: 2100000, guid: 724a31b72840ecf43836c012d0514154, type: 2}
-  lineWidth: 0.5
+  lineWidth: 0.2
   startColor: {r: 0, g: 0.8, b: 1, a: 1}
   endColor: {r: 0.9019608, g: 0, b: 1, a: 1}
   gridDot: {fileID: 1807609631924579154, guid: 0b3dd2de48965c74a9e305b758f8ecae, type: 3}
