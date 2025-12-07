@@ -83,6 +83,7 @@ public class Entity : MonoBehaviour
     }
 
     public void DestroyOnDie() {
+        for (int i = 0; i < 4; i++) Instantiate(GameManager.instance.orbPrefab, sprites.position, Quaternion.identity);
         Destroy(gameObject);
     }
 }
