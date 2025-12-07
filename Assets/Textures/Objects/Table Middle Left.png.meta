@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 194dcf9923717b64ba3e0ce640e9d3af
+guid: 3857aa07cb298d74e9c031f3b77cb2b8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8426910754468521687
-    second: Health UI Bottom Layer_0
+      213: 6885898496579990238
+    second: Table Middle Left_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Health UI Bottom Layer_0
+      name: Table Middle Left_0
       rect:
         serializedVersion: 2
-        x: 6
-        y: 6
-        width: 20
-        height: 5
+        x: 0
+        y: 0
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9291cf501599d0b80800000000000000
-      internalID: -8426910754468521687
+      spriteID: ed2fb081330af8f50800000000000000
+      internalID: 6885898496579990238
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 416e2780e10be2846a63567609c266e7
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Health UI Bottom Layer_0: -8426910754468521687
+      Table Middle Left_0: 6885898496579990238
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -10,9 +10,6 @@ public class PlayerController : Entity
     [field: SerializeField] public float Mana { get; private set; }
     [SerializeField] public float MaxMana;
 
-    [field: SerializeField] public float Stamina { get; private set; }
-    [SerializeField] public float MaxStamina;
-
     new private Rigidbody2D rigidbody;
     private InputAction sprintAction;
     private InputAction moveAction;

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 194dcf9923717b64ba3e0ce640e9d3af
+guid: 97eb11c66fb66fb4ca05eba6b3bea1e6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8426910754468521687
-    second: Health UI Bottom Layer_0
+      213: -7929778345041325515
+    second: Stool Facing Right_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Health UI Bottom Layer_0
+      name: Stool Facing Right_0
       rect:
         serializedVersion: 2
-        x: 6
-        y: 6
-        width: 20
-        height: 5
+        x: 4
+        y: 0
+        width: 11
+        height: 11
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9291cf501599d0b80800000000000000
-      internalID: -8426910754468521687
+      spriteID: 5321a34eb94c3f190800000000000000
+      internalID: -7929778345041325515
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 416e2780e10be2846a63567609c266e7
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Health UI Bottom Layer_0: -8426910754468521687
+      Stool Facing Right_0: -7929778345041325515
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
