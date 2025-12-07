@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : Entity
@@ -36,6 +37,7 @@ public class PlayerController : Entity
 
     public void OnDeath() {
         Debug.Log("Player died :(");
+        SceneManager.LoadScene("GameOver");
     }
 
     public void AddMana(float amount)
