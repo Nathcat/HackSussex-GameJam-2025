@@ -96,6 +96,6 @@ public class EnemyController : Entity {
 
     private void OnAggro(Entity source) {
         aggroDelay = true;
-        this.RunAfter(Random.Range(0f, 5f), () => { aggroDelay = false; }); 
+        this.RunAfter(Random.Range(0f, 0.5f), () => { aggroDelay = false; }); 
     }
 }
