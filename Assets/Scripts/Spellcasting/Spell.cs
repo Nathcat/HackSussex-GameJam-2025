@@ -12,8 +12,12 @@ public class Spell : MonoBehaviour
     [field: SerializeField]
     public float manaCost { get; private set; }
 
-    public bool MatchPattern(int[] pattern) {
+    public virtual bool MatchPattern(int[] pattern) {
         return Enumerable.SequenceEqual(castPattern, pattern);
+    }
+
+    public virtual Vector3 DetermineSpellTarget(Vector3 start, int[] pattern, Vector3 end) {
+        return start;
     }
 
     public void SpellInvokedDebugMessage(Vector3 p) {
