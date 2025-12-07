@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - CastingGrid
+  - TeleportZone
   layers:
   - Default
   - TransparentFX
