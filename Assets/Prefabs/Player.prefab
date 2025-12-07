@@ -413,8 +413,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 111ae59d4a6476641aab2c55a2e9b4df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <health>k__BackingField: 0
-  maxHealth: 0
+  <health>k__BackingField: 100
+  maxHealth: 100
   animationSpeed: 10
   walkSpeed: 5
   runSpeed: 2

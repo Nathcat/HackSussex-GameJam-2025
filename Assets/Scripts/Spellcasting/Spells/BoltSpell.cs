@@ -5,10 +5,10 @@ public class BoltSpell : MonoBehaviour
     private Rigidbody2D rb;
 
     public float velocity = 1f;
+    public float damage = 8f;
 
     public void OnCollisionEnter2D(Collision2D collision) {
-        // TODO Do something here!
-        Debug.LogWarning("Health not implemented!");
+        collision.transform.GetComponent<Entity>().AddHealth(-damage);
 
         Destroy(rb);
         this.RunAfter(0.5f, () => Destroy(gameObject));
