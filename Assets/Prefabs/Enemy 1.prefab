@@ -68,6 +68,8 @@ MonoBehaviour:
   attackCooldown: 1
   attackDistance: 1
   attackDamage: 20
+  aggroGroup: {fileID: 0}
+  eyesightDistance: 5
 --- !u!195 &2025574792731664345
 NavMeshAgent:
   m_ObjectHideFlags: 0
