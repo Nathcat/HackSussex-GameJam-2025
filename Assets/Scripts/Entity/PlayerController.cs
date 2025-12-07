@@ -26,6 +26,7 @@ public class PlayerController : Entity
     {
         base.Update();
         Vector2 velocity = moveAction.ReadValue<Vector2>() * walkSpeed;
+        if (Application.isEditor && sprintAction.IsPressed()) velocity *= 5;
         rigidbody.linearVelocity = velocity;
     }
 
