@@ -85,7 +85,6 @@ public class EnemyController : Entity {
     private void UpdateHealthBar() {
         float fraction = health / maxHealth;
         healthBar.transform.localScale = new Vector3(2 * fraction, 0.2f, 0.2f);
-        healthBar.transform.localPosition = new Vector3(-fraction, healthBar.transform.position.y, healthBar.transform.position.z);
         aggroGroup.aggroEvent.Invoke(GameManager.instance.player);
     }
 }
