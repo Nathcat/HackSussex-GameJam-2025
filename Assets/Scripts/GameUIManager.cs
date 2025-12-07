@@ -6,10 +6,8 @@ public class GameUIManager : MonoBehaviour
     private UIDocument UIDoc;
     private Label m_healthLabel;
     private Label m_manaLabel;
-    private Label m_staminaLabel;
     private VisualElement m_healthBarMask;
     private VisualElement m_manaBarMask;
-    private VisualElement m_staminaBarMask;
 
     void Start()
     {
