@@ -10,6 +10,7 @@ public class BoltSpellCasting : Spell
 
     public override Vector3 DetermineSpellTarget(Vector3 start, int[] pattern, Vector3 end) {
         Vector3 direction = Vector3.Normalize(end - start);
-        return GameManager.instance.player.transform.position + direction;
+        float distance = (start - GameManager.instance.player.transform.position).magnitude;
+        return GameManager.instance.player.transform.position + (direction * distance);
     }
 }
