@@ -1,6 +1,5 @@
-<h1 style="font-size: 40px; display: flex; gap: 10px">
-<img src="icon.png" height=60>
-<span style="padding-top:5px">Mind Your Mana</span>
+<h1 style="font-size: 40px;">
+<img src="title.png" height=100>
 </h1>
 
 Mind Your Mana is a dungeon crawler where you draw different symbols to cast spells.
