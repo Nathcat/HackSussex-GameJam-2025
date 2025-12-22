@@ -23,7 +23,7 @@ public class TorchFlicker : MonoBehaviour
     void Choose()
     {
         speed = Random.Range(0.01f, 0.1f);
-        target = initial + Random.Range(-0.5f, 0.5f);
+        target = initial + Random.Range(-1f, 0.5f);
         this.RunAfter(Random.Range(0.2f, 0.8f), Choose);
     }
 }
