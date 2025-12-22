@@ -1,4 +1,3 @@
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -61,9 +60,11 @@ public class Entity : MonoBehaviour
             attackAnimation -= Time.deltaTime * animationSpeed;
         }
 
-        int sorting = -Mathf.RoundToInt(shadow.transform.position.y);
-        sprite.sortingOrder = sorting - 1;
+        int sorting = -Mathf.RoundToInt(shadow.transform.position.y * 10 - 5);
+        sprite.sortingOrder = sorting;
         shadow.sortingOrder = sorting - 1;
+
+        sprite.color = Color.Lerp(sprite.color, Color.white, Time.deltaTime * 4);
 
         old = position;
     }
@@ -73,11 +74,13 @@ public class Entity : MonoBehaviour
         attackAnimation = Mathf.PI;
     }
 
-    public void AddHealth(float amount)
+    public void AddHealth(float delta)
     {
 
-        health = Mathf.Clamp(health + amount, 0, maxHealth);
-        onHeathChange.Invoke(amount);
+        health = Mathf.Clamp(health + delta, 0, maxHealth);
+        onHeathChange.Invoke(delta);
+
+        if (delta < 0) sprite.color = Color.red;
 
         if (health == 0) {
             onDeath.Invoke();
