@@ -16,12 +16,10 @@ public class Entity : MonoBehaviour
     private float attackAnimation;
     private float walkAnimation;
     private Transform sprites;
-    private Vector2 old;
+    private Vector2 old = Vector2.zero;
 
     protected virtual void Start()
     {
-        old = transform.position;
-
         sprites = transform.Find("Sprites");
         shadow = sprites.Find("Shadow").GetComponent<SpriteRenderer>();
         sprite = sprites.Find("Sprite").GetComponent<SpriteRenderer>();
@@ -29,6 +27,7 @@ public class Entity : MonoBehaviour
 
     protected virtual void Update()
     {
+        if (old == Vector2.zero) old = transform.position;
         Vector2 position = transform.position;
         Vector2 delta = position - old;
 

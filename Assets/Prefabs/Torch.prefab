@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4349739091517773784}
   - component: {fileID: 2733150755127433944}
   m_Layer: 0
-  m_Name: Light 2D
+  m_Name: Torch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
