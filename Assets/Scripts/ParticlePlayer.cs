@@ -14,7 +14,7 @@ public class ParticlePlayer : MonoBehaviour
 
     void Update()
     {
-        if (particles.particleCount == 0) Destroy(gameObject);
+        if (particles.isStopped) Destroy(gameObject);
     }
 
     public static void Activate(GameObject gameObject)

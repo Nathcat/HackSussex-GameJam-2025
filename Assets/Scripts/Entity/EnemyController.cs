@@ -19,6 +19,8 @@ public class EnemyController : Entity {
     protected float eyesightDistance = 10f;
     [SerializeField]
     protected GameObject healthBar;
+    [SerializeField]
+    protected GameObject deathEffect;
 
     override protected void Start()
     {
@@ -28,6 +30,7 @@ public class EnemyController : Entity {
 
         base.onHeathChange.AddListener(UpdateHealthBar);
         aggroGroup.aggroEvent.AddListener(OnAggro);
+        base.onDeath.AddListener(OnDeath);
     }
 
     override protected void Update()
@@ -97,5 +100,10 @@ public class EnemyController : Entity {
     private void OnAggro(Entity source) {
         aggroDelay = true;
         this.RunAfter(Random.Range(0f, 0.5f), () => { aggroDelay = false; }); 
+    }
+
+    private void OnDeath()
+    {
+        ParticlePlayer.Activate(deathEffect);
     }
 }

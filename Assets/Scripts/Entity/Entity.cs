@@ -60,7 +60,7 @@ public class Entity : MonoBehaviour
             attackAnimation -= Time.deltaTime * animationSpeed;
         }
 
-        int sorting = -Mathf.RoundToInt(shadow.transform.position.y * 10 - 5);
+        int sorting = -Mathf.RoundToInt(shadow.transform.position.y * 10 - 3);
         sprite.sortingOrder = sorting;
         shadow.sortingOrder = sorting - 1;
 
