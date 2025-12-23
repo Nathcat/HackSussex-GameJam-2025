@@ -7,6 +7,7 @@ public class BoltSpell : MonoBehaviour
     private Rigidbody2D rb;
     private Light2D light;
 
+    [SerializeField] private int bounces = 2;
     public float velocity = 1f;
     public float damage = 8f;
 
@@ -18,14 +19,26 @@ public class BoltSpell : MonoBehaviour
     public void OnCollisionEnter2D(Collision2D collision) {
 
         Entity c;
-        if ((c = collision.transform.GetComponent<Entity>()) != null) c.AddHealth(-damage);
+        if ((c = collision.transform.GetComponent<Entity>()) != null)
+        {
+            c.AddHealth(-damage);
+            bounces = 0;
+        }
 
-        Destroy(rb);
         AudioManager.instance.bolt.PlayAt(transform.position);
-        GetComponent<AudioSource>().Stop();
-        transform.Find("Particle Death").GetComponent<ParticleSystem>().Play();
-        this.RunAfter(1f, () => Destroy(gameObject));
-        death = Time.realtimeSinceStartup;
+
+        if (bounces > 1)
+        {
+            bounces--;
+        }
+        else
+        {
+            Destroy(rb);
+            GetComponent<AudioSource>().Stop();
+            transform.Find("Particle Death").GetComponent<ParticleSystem>().Play();
+            this.RunAfter(1f, () => Destroy(gameObject));
+            death = Time.realtimeSinceStartup;
+        }
     }
 
     public void onSpellInvoked(Vector3 target) {

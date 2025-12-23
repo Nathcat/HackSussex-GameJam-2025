@@ -176,6 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eea3a8845bb4b249a6404cc0ff3441f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bounces: 3
   velocity: 30
   damage: 25
 --- !u!50 &8035656633162458255
@@ -194,7 +195,7 @@ Rigidbody2D:
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: af4a6c174f8474c4cbe8de34cecd3bc1, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
