@@ -13,9 +13,8 @@ public class Spell : MonoBehaviour
     public float manaCost { get; private set; }
 
     public virtual bool MatchPattern(int[] pattern) {
-        for (int i = 0; i < 6; i++)
-            if (Enumerable.SequenceEqual(castPattern, pattern.Select(s => (s + i) % 6))) return true;
-
+        for (int i = 0; i < castPattern.Length; i++)
+            if (Enumerable.SequenceEqual(pattern, castPattern.Select((_, j) => castPattern[(i + j) % castPattern.Length]))) return true;
         return false;
     }
 
