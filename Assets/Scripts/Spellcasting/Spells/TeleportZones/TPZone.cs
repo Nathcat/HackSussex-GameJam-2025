@@ -1,13 +1,20 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class TPZone : TeleportZone
 {
-    public Vector3 targetLocation;
+    public Transform target;
+
+    private void OnDrawGizmos()
+    {
+        if (target == null) return;
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(target.position, 0.5f);
+        Gizmos.DrawLine(transform.position, target.position);
+    }
 
     public override void OnTeleport()
     {
-        GameManager.instance.player.transform.position = targetLocation;
-        AudioManager.instance.teleport.PlayAt(targetLocation);
+        GameManager.instance.player.transform.position = target.position;
     }
 }

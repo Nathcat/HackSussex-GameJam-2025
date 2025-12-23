@@ -16,8 +16,8 @@ public class Entity : MonoBehaviour
     private SpriteRenderer shadow;
     private float attackAnimation;
     private float walkAnimation;
-    private Transform sprites;
     private Vector2 old = Vector2.zero;
+    public Transform sprites { get; private set; }
 
     protected virtual void Start()
     {

@@ -61,7 +61,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onSpellCast:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Tutorial, Assembly-CSharp
+        m_MethodName: Complete
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onSpellFailed:
     m_PersistentCalls:
       m_Calls: []
@@ -92,5 +104,6 @@ MonoBehaviour:
   doorUnlock: {fileID: 8300000, guid: c7368eb8bf8b8ac428b5f6deaf2fdce1, type: 3}
   doorDeny: {fileID: 8300000, guid: 35348f0888133a343bfd44b70da14477, type: 3}
   connect: {fileID: 8300000, guid: 86f9a2d6a3f9a0545bfc6c2ec553680a, type: 3}
-  teleport: {fileID: 8300000, guid: 9daadcc9a4011f64492b0f8d88ac227d, type: 3}
+  teleportOut: {fileID: 8300000, guid: b1f612604abca2b4588b76a4558b4d22, type: 3}
+  teleportIn: {fileID: 8300000, guid: 4e362f8b26e265d44ba90e1561f3a16a, type: 3}
   tutorial: {fileID: 8300000, guid: fd8c806254eca9a4bb4105fb36a290d7, type: 3}

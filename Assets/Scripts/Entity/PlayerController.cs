@@ -11,8 +11,11 @@ public class PlayerController : Entity
     [field: SerializeField] public float mana { get; private set; }
     [SerializeField] public float maxMana;
     [SerializeField] private float manaRegen;
-
     [SerializeField] private Vector2 spawnOffset;
+    [SerializeField] private float teleportSpeed;
+    [SerializeField] private GameObject teleportEffect;
+    [SerializeField] private ParticleSystem teleportTrail;
+
     public UnityEvent onManaChange = new UnityEvent();
     public UnityEvent onReady = new UnityEvent();
     public UnityEvent onMove = new UnityEvent();
@@ -48,8 +51,10 @@ public class PlayerController : Entity
     {
         base.Update();
         if (!rigidbody.simulated) transform.position += Time.deltaTime * walkSpeed * (Vector3) spawnOffset.normalized;
-        else
+        else if (teleportTrail.isEmitting)
         {
+            teleportTrail.transform.position += new Vector3(0, teleportSpeed, 0) * Time.deltaTime;
+        } else {
             Vector2 velocity = moveAction.ReadValue<Vector2>() * walkSpeed;
             if (Application.isEditor && sprintAction.IsPressed()) velocity *= 5;
             rigidbody.linearVelocity = velocity;
@@ -73,5 +78,31 @@ public class PlayerController : Entity
     private void HealthChanged(float delta)
     {
         if (delta < 0) AudioManager.instance.hit.PlayAt(transform.position);
+    }
+
+    public void Teleport(System.Action onTeleport)
+    {
+        Instantiate(teleportEffect, transform.position, Quaternion.identity);
+        AudioManager.instance.teleportOut.PlayAt(transform.position);
+        sprites.gameObject.SetActive(false);
+        invulnerable = true;
+
+        var emission = teleportTrail.emission;
+        emission.enabled = true;
+
+        this.RunAfter(0.75f, () => {
+            onTeleport();
+            teleportSpeed = -teleportSpeed;
+            AudioManager.instance.teleportIn.PlayAt(transform.position);
+        });
+        
+        this.RunAfter(1.5f, () => {
+            Instantiate(teleportEffect, transform.position, Quaternion.identity);
+            var emission = teleportTrail.emission;
+            emission.enabled = false;
+            sprites.gameObject.SetActive(true);
+            teleportSpeed = -teleportSpeed;
+            invulnerable = false;
+        });
     }
 }
