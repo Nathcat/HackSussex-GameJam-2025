@@ -6,6 +6,7 @@ public class BoltSpell : MonoBehaviour
     private float death = -1;
     private Rigidbody2D rb;
     private Light2D light;
+    private float timer = 5;
 
     [SerializeField] private int bounces = 2;
     public float velocity = 1f;
@@ -27,11 +28,9 @@ public class BoltSpell : MonoBehaviour
 
         AudioManager.instance.bolt.PlayAt(transform.position);
 
-        if (bounces > 1)
-        {
+        if (bounces > 1) {
             bounces--;
-        }
-        else End();
+        } else End();
     }
 
     private void End()
@@ -56,6 +55,7 @@ public class BoltSpell : MonoBehaviour
     private void Update()
     {
         if (death != -1) light.intensity = 5f - (Time.realtimeSinceStartup - death) * 5f;
-        if (rb != null && rb.linearVelocity.magnitude < velocity / 2) End();
+        if (timer <= 0 && rb != null) End();
+        timer -= Time.deltaTime;
     }
 }
