@@ -9,7 +9,6 @@ public class Entity : MonoBehaviour
 
     public UnityEvent<float> onHeathChange = new UnityEvent<float>();
     public UnityEvent onDeath = new UnityEvent();
-    public UnityEvent onMove = new UnityEvent();
 
     private bool rotationFixed = false;
     private SpriteRenderer sprite;
@@ -31,8 +30,6 @@ public class Entity : MonoBehaviour
         if (old == Vector2.zero) old = transform.position;
         Vector2 position = transform.position;
         Vector2 delta = position - old;
-
-        if (delta != Vector2.zero) onMove.Invoke();
 
         if (delta.x < 0) sprite.flipX = true;
         if (delta.x > 0) sprite.flipX = false;

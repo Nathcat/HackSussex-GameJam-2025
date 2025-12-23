@@ -7,7 +7,7 @@ public class Tutorial : MonoBehaviour
     [SerializeField] private GameObject nextTutorial;
 
     new private SpriteRenderer renderer;
-    private Color target;
+    private Color target = transparent;
 
     private void Start()
     {

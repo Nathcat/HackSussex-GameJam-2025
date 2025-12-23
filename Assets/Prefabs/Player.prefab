@@ -486,7 +486,11 @@ MonoBehaviour:
   <mana>k__BackingField: 100
   maxMana: 100
   manaRegen: 2
+  spawnOffset: {x: 0, y: 7.89}
   onManaChange:
+    m_PersistentCalls:
+      m_Calls: []
+  onReady:
     m_PersistentCalls:
       m_Calls: []
 --- !u!50 &8408915894606454074
