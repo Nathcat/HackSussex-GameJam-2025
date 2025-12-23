@@ -106,5 +106,6 @@ public class EnemyController : Entity {
     private void OnDeath()
     {
         ParticlePlayer.Activate(deathEffect);
+        AudioManager.instance.skeletonDie.PlayAt(transform.position);
     }
 }

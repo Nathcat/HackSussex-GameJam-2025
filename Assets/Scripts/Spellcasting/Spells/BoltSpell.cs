@@ -6,7 +6,7 @@ public class BoltSpell : MonoBehaviour
     private float death = -1;
     private Rigidbody2D rb;
     private Light2D light;
-    private float timer = 5;
+    private float timer = 3;
 
     [SerializeField] private int bounces = 2;
     public float velocity = 1f;

@@ -107,3 +107,4 @@ MonoBehaviour:
   teleportOut: {fileID: 8300000, guid: b1f612604abca2b4588b76a4558b4d22, type: 3}
   teleportIn: {fileID: 8300000, guid: 4e362f8b26e265d44ba90e1561f3a16a, type: 3}
   tutorial: {fileID: 8300000, guid: fd8c806254eca9a4bb4105fb36a290d7, type: 3}
+  skeletonDie: {fileID: 8300000, guid: 0a2e1a7d2df938d4e935cd5a02682aeb, type: 3}

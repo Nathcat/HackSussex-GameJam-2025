@@ -17,6 +17,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip teleportOut;
     public AudioClip teleportIn;
     public AudioClip tutorial;
+    public AudioClip skeletonDie;
 
     private void Awake()
     {
