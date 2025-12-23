@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3142996221941619688}
   - component: {fileID: 885624896100606825}
+  - component: {fileID: 5822671992396769858}
   m_Layer: 0
   m_Name: Bolt Door_0
   m_TagString: Untagged
@@ -91,6 +92,19 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &5822671992396769858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2377613915293668020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1eb3ae2a08fd1e43beac2ac9acf10ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FloatAnimation
+  amplitude: 0.02
 --- !u!1 &4811567784867084803
 GameObject:
   m_ObjectHideFlags: 0
@@ -5048,7 +5062,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   required: {fileID: 1428310822817054226, guid: 79752b386ce01c64fb1a0cc3ce1b518c, type: 3}
-  distance: 5
+  distance: 15
+  error: {fileID: 21300000, guid: 90e68175c1b00c74ea85f50d44fe74e1, type: 3}
 --- !u!61 &8720006511727029325
 BoxCollider2D:
   m_ObjectHideFlags: 0

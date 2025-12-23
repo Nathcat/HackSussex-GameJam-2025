@@ -374,6 +374,7 @@ MonoBehaviour:
   gridDot: {fileID: 1807609631924579154, guid: 0b3dd2de48965c74a9e305b758f8ecae, type: 3}
   gridRadius: 2.5
   matchDistance: 0.5
+  hintColor: {r: 0.5518868, g: 1, b: 0.9768918, a: 1}
 --- !u!164 &7270298832448925721
 AudioReverbFilter:
   m_ObjectHideFlags: 0
@@ -448,6 +449,9 @@ MonoBehaviour:
   <health>k__BackingField: 100
   maxHealth: 100
   animationSpeed: 10
+  onHeathChange:
+    m_PersistentCalls:
+      m_Calls: []
   onDeath:
     m_PersistentCalls:
       m_Calls:
@@ -475,10 +479,16 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onMove:
+    m_PersistentCalls:
+      m_Calls: []
   walkSpeed: 5
   <mana>k__BackingField: 100
   maxMana: 100
   manaRegen: 2
+  onManaChange:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!50 &8408915894606454074
 Rigidbody2D:
   serializedVersion: 5

@@ -1,12 +1,15 @@
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class Spellcasting : MonoBehaviour
 {
-    private LineRenderer lineRenderer;
+    private LineRenderer spellLine;
+    private LineRenderer hintLine;
     private Vector3 start;
     private bool drawing = false;
     private List<int> sections;
+    private int[] hint;
     
     public float renderPlane = 5f;
     public Material lineMaterial;
@@ -16,11 +19,31 @@ public class Spellcasting : MonoBehaviour
     public GameObject gridDot;
     public float gridRadius = 1f;
     public float matchDistance = 0.1f;
+    [SerializeField] public Color hintColor;
 
     void Start()
     {
-        lineRenderer = gameObject.AddComponent<LineRenderer>();
-        lineRenderer.material = lineMaterial;
+        spellLine = gameObject.AddComponent<LineRenderer>();
+        SetupLine(spellLine);
+
+        hintLine = new GameObject("HintLine").AddComponent<LineRenderer>();
+        hintLine.transform.SetParent(transform);
+        SetupLine(hintLine);
+        hintLine.startColor = hintColor;
+        hintLine.endColor = hintColor;
+        hintLine.startWidth = lineWidth / 2f;
+        hintLine.endWidth = lineWidth / 2f;
+    }
+
+    private void SetupLine(LineRenderer lr)
+    {
+        lr.material = lineMaterial;
+        lr.startColor = startColor;
+        lr.endColor = endColor;
+        lr.startWidth = lineWidth;
+        lr.endWidth = lineWidth;
+        lr.alignment = LineAlignment.TransformZ;
+        lr.sortingLayerName = "Spellcasting";
     }
 
     void Update() {
@@ -32,42 +55,49 @@ public class Spellcasting : MonoBehaviour
             if (!drawing) {
                 start = mouse;
                 drawing = true;
-                lineRenderer.enabled = true;
+                spellLine.enabled = true;
                 sections = new List<int>();
+                hint = GetHint();
                 CreateGrid();
             }
 
-            lineRenderer.startColor = startColor;
-            lineRenderer.endColor = endColor;
-            lineRenderer.startWidth = lineWidth;
-            lineRenderer.endWidth = lineWidth;
-            lineRenderer.alignment = LineAlignment.TransformZ;
-            lineRenderer.sortingLayerName = "Spellcasting";
-
             Vector3 worldStart = Camera.main.ScreenToWorldPoint(start);
-            lineRenderer.positionCount = sections.Count + 2;
-            lineRenderer.SetPosition(0, worldStart);
+            spellLine.positionCount = sections.Count + 2;
+            spellLine.SetPosition(0, worldStart);
             Vector3 end = DetermineEndPosition();
             Vector3 currentCentre = worldStart;
 
             for (int i = 1; i <= sections.Count; i++) {
                 currentCentre += GetGridPosition(sections[i-1]);
-                lineRenderer.SetPosition(i, currentCentre);
+                spellLine.SetPosition(i, currentCentre);
             }
 
-            lineRenderer.SetPosition(sections.Count + 1, target);
+            if (hint == null || sections.Count >= hint.Length)
+            {
+                hintLine.enabled = false;
+                hint = null;
+            }
+            else
+            {
+                hintLine.enabled = true;
+                hintLine.SetPositions(new Vector3[] { currentCentre, currentCentre + GetGridPosition(hint[sections.Count]) });
+            }
+
+            spellLine.SetPosition(sections.Count + 1, target);
 
             Vector3 targetOffset = target - end;
             int p;
             if ((p = MatchToPoint(targetOffset)) != -1) {
                 AudioManager.instance.connect.PlayAt(GameManager.instance.player.transform.position);
+                if (hint != null && hint[sections.Count] != p) hint = null;
                 sections.Add(p);
                 CreateGrid();
             }
         }
         else if (drawing) {
             drawing = false;
-            lineRenderer.enabled = false;
+            spellLine.enabled = false;
+            hintLine.enabled = false;
             DestroyGrid();
 
             int[] pattern = sections.ToArray();
@@ -83,6 +113,14 @@ public class Spellcasting : MonoBehaviour
                 AudioManager.instance.deny.PlayAt(GameManager.instance.player.transform.position);
             }
         }
+    }
+
+    private int[] GetHint()
+    {
+        foreach (SpellHint sd in FindObjectsByType<SpellHint>(FindObjectsSortMode.None))
+            if (sd.inRange) return sd.hint;
+
+        return null;
     }
 
     private Vector3 GetGridPosition(int index) {

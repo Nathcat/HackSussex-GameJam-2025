@@ -5,8 +5,8 @@ public class SpellEventManager : MonoBehaviour
 {
     public static SpellEventManager instance;
 
-    [HideInInspector] public UnityEvent<Spell, Vector3, Vector3> onSpellCast = new UnityEvent<Spell, Vector3, Vector3>();
-    [HideInInspector] public UnityEvent<int[]> onSpellFailed = new UnityEvent<int[]>();
+    public UnityEvent<Spell, Vector3, Vector3> onSpellCast = new UnityEvent<Spell, Vector3, Vector3>();
+    public UnityEvent<int[]> onSpellFailed = new UnityEvent<int[]>();
 
     [SerializeField]
     private Spell[] spells;

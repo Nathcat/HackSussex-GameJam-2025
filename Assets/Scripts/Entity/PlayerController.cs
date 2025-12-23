@@ -11,7 +11,7 @@ public class PlayerController : Entity
     [field: SerializeField] public float mana { get; private set; }
     [SerializeField] public float maxMana;
     [SerializeField] private float manaRegen;
-    public readonly UnityEvent onManaChange = new UnityEvent();
+    public UnityEvent onManaChange = new UnityEvent();
 
     new private Rigidbody2D rigidbody;
     private InputAction sprintAction;
