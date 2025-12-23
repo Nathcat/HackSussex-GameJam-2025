@@ -28,7 +28,7 @@ public class GameUIManager : MonoBehaviour
         float maxHealth = GameManager.instance.player.maxHealth;
 
         float healthRatio = currentHealth / maxHealth;
-        float healthPercent = Mathf.Lerp(0, 100, healthRatio);
+        float healthPercent = Mathf.Lerp(0, 91, healthRatio);
         m_healthBarMask.style.width = Length.Percent(healthPercent);
         float rounded = Mathf.Round(currentHealth);
         m_healthLabel.text = $"{rounded}/{maxHealth}";
@@ -40,7 +40,7 @@ public class GameUIManager : MonoBehaviour
         float maxMana = GameManager.instance.player.maxMana;
 
         float manaRatio = currentMana / maxMana;
-        float manaPercent = Mathf.Lerp(0, 100, manaRatio);
+        float manaPercent = Mathf.Lerp(0, 91, manaRatio);
         m_manaBarMask.style.width = Length.Percent(manaPercent);
         float rounded = Mathf.Round(currentMana);
         m_manaLabel.text = $"{rounded}/{maxMana}";
