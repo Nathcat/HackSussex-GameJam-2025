@@ -36,6 +36,7 @@ public class BoltSpell : MonoBehaviour
     private void End()
     {
         Destroy(rb);
+        Destroy(GetComponent<Collider2D>());
         GetComponent<AudioSource>().Stop();
         transform.Find("Particle Death").GetComponent<ParticleSystem>().Play();
         this.RunAfter(1f, () => Destroy(gameObject));
