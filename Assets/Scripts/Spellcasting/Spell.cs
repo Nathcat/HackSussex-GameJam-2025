@@ -13,7 +13,10 @@ public class Spell : MonoBehaviour
     public float manaCost { get; private set; }
 
     public virtual bool MatchPattern(int[] pattern) {
-        return Enumerable.SequenceEqual(castPattern, pattern);
+        for (int i = 0; i < 6; i++)
+            if (Enumerable.SequenceEqual(castPattern, pattern.Select(s => (s + i) % 6))) return true;
+
+        return false;
     }
 
     public virtual Vector3 DetermineSpellTarget(Vector3 start, int[] pattern, Vector3 end) {
