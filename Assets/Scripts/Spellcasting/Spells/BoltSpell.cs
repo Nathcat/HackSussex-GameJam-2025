@@ -31,14 +31,16 @@ public class BoltSpell : MonoBehaviour
         {
             bounces--;
         }
-        else
-        {
-            Destroy(rb);
-            GetComponent<AudioSource>().Stop();
-            transform.Find("Particle Death").GetComponent<ParticleSystem>().Play();
-            this.RunAfter(1f, () => Destroy(gameObject));
-            death = Time.realtimeSinceStartup;
-        }
+        else End();
+    }
+
+    private void End()
+    {
+        Destroy(rb);
+        GetComponent<AudioSource>().Stop();
+        transform.Find("Particle Death").GetComponent<ParticleSystem>().Play();
+        this.RunAfter(1f, () => Destroy(gameObject));
+        death = Time.realtimeSinceStartup;
     }
 
     public void onSpellInvoked(Vector3 target) {
@@ -54,5 +56,6 @@ public class BoltSpell : MonoBehaviour
     private void Update()
     {
         if (death != -1) light.intensity = 5f - (Time.realtimeSinceStartup - death) * 5f;
+        if (rb != null && rb.linearVelocity.magnitude < velocity / 2) End();
     }
 }
