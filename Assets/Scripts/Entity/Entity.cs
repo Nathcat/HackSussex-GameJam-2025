@@ -24,6 +24,7 @@ public class Entity : MonoBehaviour
         sprites = transform.Find("Sprites");
         shadow = sprites.Find("Shadow").GetComponent<SpriteRenderer>();
         sprite = sprites.Find("Sprite").GetComponent<SpriteRenderer>();
+        sprite.flipX = Random.value > 0.5f;
     }
 
     protected virtual void Update()
