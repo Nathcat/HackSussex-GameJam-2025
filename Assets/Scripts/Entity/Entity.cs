@@ -6,6 +6,7 @@ public class Entity : MonoBehaviour
     [field: SerializeField] public float health { get; private set; }
     [SerializeField] public float maxHealth;
     [SerializeField] private float animationSpeed = 0.5f;
+    public bool invulnerable = false;
 
     public UnityEvent<float> onHeathChange = new UnityEvent<float>();
     public UnityEvent onDeath = new UnityEvent();
@@ -75,11 +76,14 @@ public class Entity : MonoBehaviour
 
     public void AddHealth(float delta)
     {
+        if (delta < 0)
+        {
+            if (invulnerable) return;
+            sprite.color = Color.red;
+        }
 
         health = Mathf.Clamp(health + delta, 0, maxHealth);
         onHeathChange.Invoke(delta);
-
-        if (delta < 0) sprite.color = Color.red;
 
         if (health == 0) {
             onDeath.Invoke();
