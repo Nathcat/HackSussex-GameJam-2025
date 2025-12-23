@@ -15,11 +15,8 @@ public class ExplosionSpell : MonoBehaviour
     {
         start = Time.realtimeSinceStartup;
         light = transform.Find("Light 2D").GetComponent<Light2D>();
-    }
-
-    public void onSpellInvoked(Vector3 target) {
-        transform.position = target;
-        AudioManager.instance.explosion.PlayAt(target);
+        
+        AudioManager.instance.explosion.PlayAt(transform.position);
 
         Collider2D[] colliders = Physics2D.OverlapCircleAll(
             new Vector2(transform.position.x, transform.position.y),
@@ -45,6 +42,10 @@ public class ExplosionSpell : MonoBehaviour
         }
 
         this.RunAfter(2f, () => { Destroy(gameObject); });
+    }
+
+    public void onSpellInvoked(Vector3 target) {
+        transform.position = target;
     }
 
     private void Update()
