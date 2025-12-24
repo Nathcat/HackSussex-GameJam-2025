@@ -22,6 +22,15 @@ public class EnemyController : Entity {
     [SerializeField]
     protected GameObject deathEffect;
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackDistance);
+        
+        Gizmos.color = Color.orange;
+        Gizmos.DrawWireSphere(transform.position, eyesightDistance);
+    }
+
     override protected void Start()
     {
         base.Start();
