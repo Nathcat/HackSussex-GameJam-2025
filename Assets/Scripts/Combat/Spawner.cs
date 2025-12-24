@@ -11,12 +11,12 @@ public class Spawner : MonoBehaviour
 
     private float timer = 0f;
     private bool spawning = false;
-    private int count = 0;
+    private int count = -1;
 
     private void Start()
     {
         timer = spawnDelay;
-        aggroGroup.aggroEvent.AddListener((_) => spawning = true);
+        aggroGroup.aggroEvent.AddListener(Aggro);
     }
 
     private void Update()
@@ -34,5 +34,19 @@ public class Spawner : MonoBehaviour
 
             timer = spawnInterval;
         }
+    }
+
+    public void Aggro(Entity target)
+    {
+        if (count == -1)
+        {
+            SetSpawning(true);
+            count = 0;
+        }
+    }
+
+    public void SetSpawning(bool value)
+    {
+        spawning = value;
     }
 }

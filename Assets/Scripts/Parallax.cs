@@ -3,7 +3,7 @@ using UnityEngine;
 public class Parallax : MonoBehaviour
 {
     [SerializeField] private float multipler = 0.05f;
-    private Vector3 initial;
+    [SerializeField] private Vector3 initial;
 
     private void Start()
     {

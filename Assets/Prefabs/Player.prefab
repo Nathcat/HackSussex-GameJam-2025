@@ -243,7 +243,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 5.65, z: 0}
-  m_LocalScale: {x: 13.86, y: 13.86, z: 13.86}
+  m_LocalScale: {x: 14.999999, y: 14.999999, z: 14.999999}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6880344661849662105}
@@ -320,6 +320,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Parallax
   multipler: 0.05
+  initial: {x: 0, y: 0, z: 0}
 --- !u!1 &4389276139650635832
 GameObject:
   m_ObjectHideFlags: 0

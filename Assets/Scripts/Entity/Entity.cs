@@ -12,7 +12,7 @@ public class Entity : MonoBehaviour
     public UnityEvent onDeath = new UnityEvent();
 
     private bool rotationFixed = false;
-    private SpriteRenderer sprite;
+    protected SpriteRenderer sprite;
     private SpriteRenderer shadow;
     private float attackAnimation;
     private float walkAnimation;
