@@ -23,6 +23,7 @@ public class PlayerController : Entity
     new private Rigidbody2D rigidbody;
     private InputAction sprintAction;
     private InputAction moveAction;
+    private Transform boss;
 
     private void OnDrawGizmos()
     {
@@ -34,6 +35,7 @@ public class PlayerController : Entity
     {
         base.Start();
 
+        boss = FindAnyObjectByType<BossEnemyController>().transform;
         rigidbody = GetComponent<Rigidbody2D>();
         moveAction = InputSystem.actions.FindAction("Move");
         sprintAction = InputSystem.actions.FindAction("Sprint");
@@ -61,9 +63,17 @@ public class PlayerController : Entity
             if (velocity.sqrMagnitude > 0) onMove.Invoke();
         }
 
-        Camera.main.transform.localPosition = new Vector3(0, transform.position.y > 150 ? 2 : 0, -10);
+        Camera.main.transform.localPosition = new Vector3(0, CameraHeight(), -10);
 
         AddMana(manaRegen * Time.deltaTime);
+    }
+
+    private float CameraHeight()
+    {
+        if (boss == null || transform.position.y < 150) return 0;
+
+        float target = transform.position.y < boss.transform.position.y ? 2 : -2;
+        return Mathf.Lerp(Camera.main.transform.localPosition.y, target, Time.deltaTime * 5);
     }
 
     public void OnDeath() {
