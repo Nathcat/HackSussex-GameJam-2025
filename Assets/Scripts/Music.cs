@@ -7,6 +7,8 @@ public class Music : MonoBehaviour
     [SerializeField] private AudioClip combatOverlay;
     [SerializeField][Range(0, 1)] private float volume = 0.126f;
 
+    public bool muted = false;
+
     private AudioSource overlaySource;
     private AudioSource baseSource;
     private bool inCombat = false;
@@ -39,9 +41,8 @@ public class Music : MonoBehaviour
 
     void Update()
     {
-        baseSource.volume = volume;
-
-        overlaySource.volume = Mathf.MoveTowards(overlaySource.volume, inCombat ? volume : 0, Time.deltaTime);
+        baseSource.volume = muted ? 0 : volume;
+        overlaySource.volume = Mathf.MoveTowards(overlaySource.volume, inCombat && !muted ? volume : 0, Time.deltaTime);
         inCombat = false;
     }
 
