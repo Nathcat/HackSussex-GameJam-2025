@@ -9,7 +9,7 @@ public class MainMenuUI : MonoBehaviour
     void Start() {
         playButton = GetComponent<UIDocument>().rootVisualElement.Q<Button>("Play");
         playButton.clicked += () => {
-            SceneManager.LoadScene("Game 1");
+            SceneManager.LoadScene("Game");
         };
     }
 }
