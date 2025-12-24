@@ -35,9 +35,9 @@ public class HealingSpell : MonoBehaviour
                 radius
             );
 
-            foreach (Collider2D c in colliders) {                
-                Entity entity;
-                if ((entity = c.GetComponent<Entity>()) != null) {
+            foreach (Collider2D c in colliders) {
+                PlayerController entity;
+                if ((entity = c.GetComponent<PlayerController>()) != null) {
                     entity.AddHealth(healAmount);
                 }
             }
