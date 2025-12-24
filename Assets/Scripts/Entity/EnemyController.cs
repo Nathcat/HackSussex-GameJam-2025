@@ -13,7 +13,7 @@ public class EnemyController : Entity {
     [SerializeField]
     protected float attackDamage = 20f;
     [SerializeField]
-    protected AggroGroup aggroGroup;
+    public AggroGroup aggroGroup;
     private bool aggroDelay = false;
     [SerializeField]
     protected float eyesightDistance = 10f;

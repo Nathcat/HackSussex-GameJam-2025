@@ -10,7 +10,7 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Environment
   - Water
   - UI
   - Player
@@ -52,11 +52,11 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Particles
-    uniqueID: 338223593
-    locked: 0
   - name: Ceiling
     uniqueID: 1471637197
+    locked: 0
+  - name: Particles
+    uniqueID: 338223593
     locked: 0
   - name: Spellcasting
     uniqueID: 3288403829

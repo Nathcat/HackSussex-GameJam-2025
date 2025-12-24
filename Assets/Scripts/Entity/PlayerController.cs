@@ -61,6 +61,8 @@ public class PlayerController : Entity
             if (velocity.sqrMagnitude > 0) onMove.Invoke();
         }
 
+        Camera.main.transform.localPosition = new Vector3(0, transform.position.y > 150 ? 2 : 0, -10);
+
         AddMana(manaRegen * Time.deltaTime);
     }
 
