@@ -65,6 +65,7 @@ public class EnemyController : Entity {
             return;
         }
 
+        Music.instance.SetInCombat();
         navAgent.destination = aggroGroup.target.transform.position;
 
         base.Update();
