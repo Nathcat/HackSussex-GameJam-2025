@@ -51,14 +51,12 @@ public class EnemyController : Entity {
         }
 
         if (aggroGroup.target == null) {
-            PlayerController player = GameManager.instance.player;
-            if (IsInEyeline(player.gameObject.GetComponent<Collider2D>())) {
-                Debug.Log(player.gameObject.name + " is in " + gameObject.name + "'s eyeline!");
-                aggroGroup.aggroEvent.Invoke(player);
+            if (IsInEyeline()) {
+                Debug.Log(GameManager.instance.player.gameObject.name + " is in " + gameObject.name + "'s eyeline!");
+                aggroGroup.aggroEvent.Invoke(GameManager.instance.player);
             }
 
             base.Update();
-
             return;
         }
 
@@ -89,14 +87,13 @@ public class EnemyController : Entity {
         }
     }
 
-    private bool IsInEyeline(Collider2D v) {
-        Vector2 p = new Vector2(transform.position.x, transform.position.y);
-        Vector2 vp = new Vector2(v.transform.position.x, v.transform.position.y);
-        RaycastHit2D hit = Physics2D.Raycast(p, vp - p, eyesightDistance, -1 ^ LayerMask.GetMask("Enemy"));
+    private bool IsInEyeline() {
+        PlayerController p = GameManager.instance.player;
+        Vector2 v = new Vector2(transform.position.x, transform.position.y);
+        Vector2 vp = new Vector2(p.transform.position.x, p.transform.position.y);
+        RaycastHit2D hit = Physics2D.Raycast(v, vp - v, eyesightDistance, -1 ^ LayerMask.GetMask("Enemy"));
 
-        if (hit) {
-            return hit.collider == v && hit.distance <= eyesightDistance;
-        }
+        if (hit) return hit.transform.gameObject.layer == LayerMask.NameToLayer("Player");
         else return false;
     }
 
