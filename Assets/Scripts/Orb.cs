@@ -1,10 +1,13 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Orb : MonoBehaviour
 {
     [SerializeField] private float gravity;
     [SerializeField] private float manaValue = 35 / 5;
     [SerializeField] private float healthValue = 10 / 5;
+    
+    private bool landed = false;
     private Vector3 velocity;
     private float floor;
 
@@ -20,6 +23,13 @@ public class Orb : MonoBehaviour
         {
             transform.position += velocity * Time.deltaTime;
             velocity = new Vector3(velocity.x, velocity.y - gravity * Time.deltaTime, 0);
+        } else if (!landed)
+        {
+            landed = true;
+            if (NavMesh.SamplePosition(transform.position, out NavMeshHit hit, float.PositiveInfinity, NavMesh.AllAreas)) {
+                Debug.Log("Orb landed at " + hit.position);
+                transform.position = hit.position;
+            }
         }
     }
 
