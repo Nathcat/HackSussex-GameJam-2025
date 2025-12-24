@@ -40,6 +40,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 3873240109
+    locked: 0
   - name: Environment
     uniqueID: 3590716463
     locked: 0
