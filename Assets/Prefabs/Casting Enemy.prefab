@@ -50,6 +50,10 @@ MonoBehaviour:
   <health>k__BackingField: 50
   maxHealth: 50
   animationSpeed: 7
+  invulnerable: 0
+  onHeathChange:
+    m_PersistentCalls:
+      m_Calls: []
   onDeath:
     m_PersistentCalls:
       m_Calls:
@@ -129,8 +133,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.034909725, y: -0.05402839}
-  m_Size: {x: 1.0262871, y: 1.8910244}
+  m_Offset: {x: -0.044549465, y: 0.026807189}
+  m_Size: {x: 1.0455666, y: 2.0526955}
   m_Direction: 0
 --- !u!1 &1017641778761410405
 GameObject:

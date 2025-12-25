@@ -194,8 +194,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.034909725, y: -0.05402839}
-  m_Size: {x: 1.0262871, y: 1.8910244}
+  m_Offset: {x: -0.0017645359, y: 0.20209289}
+  m_Size: {x: 1.5987935, y: 2.403267}
   m_Direction: 0
 --- !u!1 &1017641778761410405
 GameObject:
@@ -5427,7 +5427,7 @@ GameObject:
   - component: {fileID: 5892739316269158848}
   - component: {fileID: 7324973271225591152}
   - component: {fileID: 3956167957107593154}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: crown_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5521,8 +5521,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 10
-  m_LinearDamping: 0.1
-  m_AngularDamping: 0.1
+  m_LinearDamping: 5
+  m_AngularDamping: 5
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
