@@ -22,6 +22,7 @@ public class PlayerController : Entity
     new private Rigidbody2D rigidbody;
     private InputAction sprintAction;
     private InputAction moveAction;
+    private InputAction exitAction;
     private Transform boss;
 
     private void OnDrawGizmos()
@@ -38,6 +39,7 @@ public class PlayerController : Entity
         rigidbody = GetComponent<Rigidbody2D>();
         moveAction = InputSystem.actions.FindAction("Move");
         sprintAction = InputSystem.actions.FindAction("Sprint");
+        exitAction = InputSystem.actions.FindAction("Exit");
         onHeathChange.AddListener(HealthChanged);
 
         rigidbody.simulated = false;
@@ -51,6 +53,12 @@ public class PlayerController : Entity
     protected override void Update()
     {
         base.Update();
+
+        if (exitAction.WasPressedThisFrame()) {
+            Application.Quit();
+            return;
+        }
+
         if (health <= 0) return;
         if (!rigidbody.simulated) transform.position += Time.deltaTime * walkSpeed * (Vector3) spawnOffset.normalized;
         else if (teleportTrail.isEmitting)
