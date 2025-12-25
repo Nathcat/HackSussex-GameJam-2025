@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UIElements;
-using UnityEngine.SceneManagement;
 
 public class MainMenuUI : MonoBehaviour
 {
@@ -13,7 +12,7 @@ public class MainMenuUI : MonoBehaviour
         splash = root.Q<VisualElement>("Splash");
 
         root.Q<Button>("Play").clicked += () => {
-            SceneManager.LoadScene("Game");
+            LevelLoader.Load("Game");
         };
 
         root.Q<Button>("Quit").clicked += () => {

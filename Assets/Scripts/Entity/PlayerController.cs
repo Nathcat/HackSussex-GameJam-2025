@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : Entity
@@ -52,6 +51,7 @@ public class PlayerController : Entity
     protected override void Update()
     {
         base.Update();
+        if (health <= 0) return;
         if (!rigidbody.simulated) transform.position += Time.deltaTime * walkSpeed * (Vector3) spawnOffset.normalized;
         else if (teleportTrail.isEmitting)
         {
@@ -78,7 +78,11 @@ public class PlayerController : Entity
 
     public void OnDeath() {
         Debug.Log("Player died :(");
-        SceneManager.LoadScene("GameOver");
+
+        invulnerable = true;
+        rigidbody.simulated = false;
+        sprites.gameObject.SetActive(false);
+        this.RunAfter(3, () => LevelLoader.Load("GameOver"));
     }
 
     public void AddMana(float amount)
