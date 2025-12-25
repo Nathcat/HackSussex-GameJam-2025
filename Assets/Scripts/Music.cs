@@ -68,8 +68,8 @@ public class Music : MonoBehaviour
         inCombat = false;
     }
 
-    public void SetInCombat()
+    public static void SetInCombat()
     {
-        inCombat = true;
+        instance.inCombat = true;
     }
 }
