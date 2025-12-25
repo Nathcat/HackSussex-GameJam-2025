@@ -6,6 +6,7 @@ public class MainMenuUI : MonoBehaviour
     [SerializeField] private Texture2D musicOn;
     [SerializeField] private Texture2D musicOff;
     private VisualElement splash;
+    private Button music;
 
     void Start() {
         VisualElement root = GetComponent<UIDocument>().rootVisualElement;
@@ -23,14 +24,16 @@ public class MainMenuUI : MonoBehaviour
             Application.OpenURL("https://devpost.com/software/mind-your-mana");
         };
 
-        Button music = root.Q<Button>("Music");
-        music.clicked += () =>
-        {
-            Music.instance.muted = !Music.instance.muted;
-            music.style.backgroundImage = Music.instance.muted
-                ? Background.FromTexture2D(musicOff)
-                : Background.FromTexture2D(musicOn);
-        };
+        music = root.Q<Button>("Music");
+        music.clicked += () => SetMusic(Music.ToggleMute());
+        SetMusic(Music.instance.muted);
+    }
+
+    private void SetMusic(bool muted)
+    {
+        music.style.backgroundImage = muted
+            ? Background.FromTexture2D(musicOff)
+            : Background.FromTexture2D(musicOn);
     }
 
     private void Update()

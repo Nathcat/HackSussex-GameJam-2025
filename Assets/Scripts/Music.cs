@@ -9,7 +9,7 @@ public class Music : MonoBehaviour
     [SerializeField] private AudioClip combatClip;
     [SerializeField][Range(0, 1)] private float volume = 0.126f;
 
-    public bool muted = false;
+    public bool muted { get; private set; }
 
     private AudioSource combatSource;
     private AudioSource melodySource;
@@ -36,6 +36,7 @@ public class Music : MonoBehaviour
 
     void Awake()
     {
+        muted = PlayerPrefs.GetInt("music_muted", 0) == 1;
         if (instance != null) Destroy(gameObject);
         else {
             DontDestroyOnLoad(gameObject);
@@ -47,14 +48,14 @@ public class Music : MonoBehaviour
     {
         baseSource = gameObject.AddComponent<AudioSource>();
         baseSource.bypassListenerEffects = true;
+        baseSource.volume = muted ? 0 : volume;
         baseSource.clip = baseClip;
-        baseSource.volume = volume;
         baseSource.loop = true;
 
         melodySource = gameObject.AddComponent<AudioSource>();
         melodySource.bypassListenerEffects = true;
+        melodySource.volume = muted ? 0 : volume;
         melodySource.clip = melodyClip;
-        melodySource.volume = volume;
         melodySource.loop = true;
 
         combatSource = gameObject.AddComponent<AudioSource>();
@@ -79,5 +80,12 @@ public class Music : MonoBehaviour
     public static void SetInCombat()
     {
         instance.inCombat = true;
+    }
+
+    public static bool ToggleMute()
+    {
+        instance.muted = !instance.muted;
+        PlayerPrefs.SetInt("music_muted", instance.muted ? 1 : 0);
+        return instance.muted;
     }
 }
