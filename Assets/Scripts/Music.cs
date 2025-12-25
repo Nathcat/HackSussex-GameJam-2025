@@ -29,8 +29,10 @@ public class Music : MonoBehaviour
     void Awake()
     {
         if (instance != null) Destroy(gameObject);
-        DontDestroyOnLoad(gameObject);
-        instance = this;
+        else {
+            DontDestroyOnLoad(gameObject);
+            instance = this;
+        }
     }
 
     void Start()
