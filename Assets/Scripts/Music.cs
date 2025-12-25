@@ -24,6 +24,14 @@ public class Music : MonoBehaviour
         }
     }
 
+    private bool silent
+    {
+        get
+        {
+            return muted || SceneManager.GetActiveScene().name == "Win";
+        }
+    }
+
     public static Music instance { get; private set; } = null;
 
     void Awake()
@@ -62,9 +70,9 @@ public class Music : MonoBehaviour
 
     void Update()
     {
-        baseSource.volume = Mathf.Lerp(baseSource.volume, muted ? 0 : volume, Time.deltaTime * 2);
-        melodySource.volume = Mathf.Lerp(melodySource.volume, muted || gameOver ? 0 : volume, Time.deltaTime * 2);
-        combatSource.volume = Mathf.Lerp(combatSource.volume, ((inCombat || gameOver) && !muted) ? volume : 0, Time.deltaTime * 2);
+        baseSource.volume = Mathf.Lerp(baseSource.volume, silent ? 0 : volume, Time.deltaTime * 2);
+        melodySource.volume = Mathf.Lerp(melodySource.volume, silent || gameOver ? 0 : volume, Time.deltaTime * 2);
+        combatSource.volume = Mathf.Lerp(combatSource.volume, ((inCombat || gameOver) && !silent) ? volume : 0, Time.deltaTime * 2);
         inCombat = false;
     }
 
