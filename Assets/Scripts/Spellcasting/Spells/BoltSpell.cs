@@ -43,7 +43,8 @@ public class BoltSpell : MonoBehaviour
         death = Time.realtimeSinceStartup;
     }
 
-    public void onSpellInvoked(Vector3 target) {
+    public void onSpellInvoked(Vector3 target)
+    {
         rb = GetComponent<Rigidbody2D>();
         Vector3 direction = target - transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
@@ -51,6 +52,10 @@ public class BoltSpell : MonoBehaviour
         Vector2 v = new Vector2(direction.x, direction.y);
         v.Normalize();
         rb.linearVelocity = v * velocity;
+
+        CircleCollider2D collider = GetComponent<CircleCollider2D>();
+        while (Physics2D.OverlapCircle((Vector2)transform.position + collider.offset, collider.radius, LayerMask.GetMask("Environment")))
+            transform.position -= new Vector3(0, 0.1f, 0);
     }
 
     private void Update()
