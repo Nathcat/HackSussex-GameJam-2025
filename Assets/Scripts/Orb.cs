@@ -37,6 +37,7 @@ public class Orb : MonoBehaviour
         Vector3 direction = (GameManager.instance.player.transform.position - transform.position).normalized;
         float magnetism = magnetismCurve.Evaluate(distance);
         transform.position += direction * magnetism * Time.deltaTime;
+        floor = transform.position.y;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
