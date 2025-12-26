@@ -79,7 +79,7 @@ public class Music : MonoBehaviour
 
     public static void SetInCombat()
     {
-        instance.inCombat = true;
+        if (instance != null) instance.inCombat = true;
     }
 
     public static bool ToggleMute()
