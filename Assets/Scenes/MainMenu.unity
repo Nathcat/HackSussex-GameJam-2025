@@ -295,7 +295,6 @@ MonoBehaviour:
   melodyClip: {fileID: 8300000, guid: 49d2afefebef4364fb5e9b37113f4977, type: 3}
   combatClip: {fileID: 8300000, guid: 9244e3aebfde0c6448b5f4e984cbab00, type: 3}
   volume: 0.126
-  muted: 0
 --- !u!4 &208540564
 Transform:
   m_ObjectHideFlags: 0
