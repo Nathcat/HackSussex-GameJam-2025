@@ -13,8 +13,13 @@ public class Spell : MonoBehaviour
     public float manaCost { get; private set; }
 
     public virtual bool MatchPattern(int[] pattern) {
-        for (int i = 0; i < castPattern.Length; i++)
-            if (Enumerable.SequenceEqual(pattern, castPattern.Select((_, j) => castPattern[(i + j) % castPattern.Length]))) return true;
+        int[] flippedPattern = castPattern.Select((s) => 5 - s).ToArray();
+        return PatternsMatch(castPattern, pattern) || PatternsMatch(flippedPattern, pattern);
+    }
+
+    private bool PatternsMatch(int[] patternA, int[] patternB) {
+        for (int i = 0; i < patternA.Length; i++)
+            if (Enumerable.SequenceEqual(patternB, patternA.Select((_, j) => patternA[(i + j) % patternA.Length]))) return true;
         return false;
     }
 
