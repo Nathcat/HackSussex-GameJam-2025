@@ -54,13 +54,20 @@ public class BoltSpell : MonoBehaviour
         v.Normalize();
         rb.linearVelocity = v * velocity;
 
-        if (NavMesh.SamplePosition(transform.position, out NavMeshHit hit, float.PositiveInfinity, NavMesh.AllAreas))
-        {
-            Vector3 diff = (hit.position - transform.position) * 0.1f;
-            CircleCollider2D collider = GetComponent<CircleCollider2D>();
-            while (Physics2D.OverlapCircle((Vector2)transform.position + collider.offset, collider.radius, LayerMask.GetMask("Environment")))
+        CircleCollider2D collider = GetComponent<CircleCollider2D>();
+        if (isOverlapping(collider) && NavMesh.SamplePosition(transform.position, out NavMeshHit hit, float.PositiveInfinity, NavMesh.AllAreas)) {
+            Vector3 diff = (hit.position - transform.position).normalized * 0.1f;
+
+            for (int i = 0; i < 20; i++) {
                 transform.position += diff;
+                if (!isOverlapping(collider)) break;
+            }
         }
+    }
+
+    private bool isOverlapping(CircleCollider2D collider)
+    {
+        return Physics2D.OverlapCircle((Vector2)transform.position + collider.offset, collider.radius, LayerMask.GetMask("Environment"));
     }
 
     private void Update()
