@@ -6,7 +6,8 @@ public class Orb : MonoBehaviour
     [SerializeField] private float gravity;
     [SerializeField] private float manaValue = 35 / 5;
     [SerializeField] private float healthValue = 10 / 5;
-    
+    [SerializeField] private AnimationCurve magnetismCurve;
+
     private bool landed = false;
     private Vector3 velocity;
     private float floor;
@@ -31,6 +32,11 @@ public class Orb : MonoBehaviour
                 transform.position = hit.position;
             }
         }
+
+        float distance = Vector2.Distance(transform.position, GameManager.instance.player.transform.position);
+        Vector3 direction = (GameManager.instance.player.transform.position - transform.position).normalized;
+        float magnetism = magnetismCurve.Evaluate(distance);
+        transform.position += direction * magnetism * Time.deltaTime;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
