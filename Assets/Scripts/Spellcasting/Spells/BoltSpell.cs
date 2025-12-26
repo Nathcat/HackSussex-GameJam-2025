@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Rendering.Universal;
 
 public class BoltSpell : MonoBehaviour
@@ -53,9 +54,13 @@ public class BoltSpell : MonoBehaviour
         v.Normalize();
         rb.linearVelocity = v * velocity;
 
-        CircleCollider2D collider = GetComponent<CircleCollider2D>();
-        while (Physics2D.OverlapCircle((Vector2)transform.position + collider.offset, collider.radius, LayerMask.GetMask("Environment")))
-            transform.position -= new Vector3(0, 0.1f, 0);
+        if (NavMesh.SamplePosition(transform.position, out NavMeshHit hit, float.PositiveInfinity, NavMesh.AllAreas))
+        {
+            Vector3 diff = (hit.position - transform.position) * 0.1f;
+            CircleCollider2D collider = GetComponent<CircleCollider2D>();
+            while (Physics2D.OverlapCircle((Vector2)transform.position + collider.offset, collider.radius, LayerMask.GetMask("Environment")))
+                transform.position += diff;
+        }
     }
 
     private void Update()
