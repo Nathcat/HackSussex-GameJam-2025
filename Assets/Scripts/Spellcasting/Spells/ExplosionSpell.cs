@@ -27,7 +27,7 @@ public class ExplosionSpell : MonoBehaviour
             Entity entity;
             if ((entity = c.GetComponent<Entity>()) != null) {
                 // Again, STUPID
-                if (entity.GetType() != typeof(PlayerController) && boss) continue;
+                if (entity.GetType() == typeof(PlayerController) != boss) continue;
                 
                 Vector2 e = new Vector2(entity.transform.position.x, entity.transform.position.y);
                 Vector2 t = new Vector2(transform.position.x, transform.position.y);

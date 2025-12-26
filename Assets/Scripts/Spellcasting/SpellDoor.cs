@@ -26,9 +26,6 @@ public class SpellDoor : SpellHint
                 AudioManager.instance.doorUnlock.PlayAt(transform.position);
                 ParticlePlayer.Activate(transform.GetChild(1).gameObject);
                 Destroy(gameObject);
-                
-                GameManager.instance.player.invulnerable = true;
-                GameManager.instance.RunAfter(1, () => { GameManager.instance.player.invulnerable = false; });
             }
             else Failed();
         }
